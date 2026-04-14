@@ -41,7 +41,13 @@ const templates = [
   'contact',
   'privacy-policy',
   'terms',
-  '404'
+  '404',
+  'cloud-migration',
+  'cloud-devops',
+  'cloud-security',
+  'cloud-finops',
+  'managed-cloud',
+  'ai-ml'
 ];
 
 templates.forEach(template => {

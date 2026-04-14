@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Ambifo Technology - Our Story & Mission</title>
-  <link rel="icon" type="image/jpeg" href="/images/ambifo.jpeg">
+  <title>Ambifo Technology - Digital Innovation Solutions</title>
+  <link rel="icon" type="image/png" href="/images/ambifologo.png">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -19,10 +19,11 @@
         <span class="brand-name">Ambifo</span>
       </div>
       <ul class="nav-menu">
-        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/" class="nav-link active">Home</a></li>
         <li class="dropdown">
           <a href="/services" class="nav-link">Consultancy</a>
           <div class="dropdown-menu">
+            <a href="/services" class="dropdown-item">Services</a>
             <a href="/cloud-migration" class="dropdown-item">Cloud Migration Services</a>
             <a href="/cloud-devops" class="dropdown-item">Cloud DevOps & Automation</a>
             <a href="/cloud-finops" class="dropdown-item">Cloud FinOps & Optimization</a>
@@ -31,13 +32,14 @@
             <a href="/ai-ml" class="dropdown-item">AI/ML & Modern Applications</a>
           </div>
         </li>
+        <li class="dropdown">
           <a href="javascript:void(0)" class="nav-link">Resources</a>
           <div class="dropdown-menu">
             <a href="/blog" class="dropdown-item">Blog</a>
             <a href="/portfolio" class="dropdown-item">Case Studies</a>
           </div>
         </li>
-        <li><a href="/about" class="nav-link active">About</a></li>
+        <li><a href="/about" class="nav-link">About</a></li>
         <li><a href="/contact" class="nav-link cta-btn">Contact Us</a></li>
       </ul>
       <div class="hamburger">
@@ -48,109 +50,61 @@
     </div>
   </nav>
 
-  <!-- Hero Section with Banner -->
+  <!-- Hero Section -->
   <section class="hero">
     <div id="canvas-container" class="hero-canvas-3d"></div>
     <div class="hero-content">
-      <h1>About Ambifo Technology</h1>
-      <p>Our Journey Towards Digital Excellence</p>
+      <h1>Cloud Transformation at Scale</h1>
+      <p>Enterprise-grade cloud solutions for AWS, Azure, and GCP with AI-driven optimization</p>
+      <button class="btn btn-primary" onclick="showConsultationModal()">Schedule Free Consultation</button>
     </div>
     <canvas id="ambifoCanvas" class="hero-canvas"></canvas>
     <div class="hero-background"></div>
   </section>
 
-  <!-- About Content -->
-  <section class="about-section">
+  <!-- Features Section -->
+  <section class="features">
     <div class="container">
-      <div class="about-grid">
-        <div class="about-text">
-          <h2>Our Story</h2>
-          <p>Ambifo Technology is a cloud consulting and DevOps services company specializing in enterprise cloud transformation for AWS, Azure, and GCP. Since our founding, we've helped 150+ organizations migrate, optimize, and secure their cloud infrastructure while reducing operational costs and accelerating time-to-market.</p>
-          <p>With deep expertise in cloud architecture, DevOps automation, and AI/ML solutions, our team of certified cloud architects and engineers delivers end-to-end cloud services. We partner with leading enterprises to design, build, and manage complex cloud environments, enabling them to focus on business growth while we handle cloud excellence.</p>
+      <h2>Why Organizations Choose Ambifo</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Proven Expertise</h3>
+          <p>AWS & multi-cloud certified with 500+ successful projects and 150+ happy enterprise clients</p>
         </div>
-        <div class="about-stats">
-          <div class="stat">
-            <h3>500+</h3>
-            <p>Cloud Projects</p>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
           </div>
-          <div class="stat">
-            <h3>150+</h3>
-            <p>Enterprise Clients</p>
-          </div>
-          <div class="stat">
-            <h3>50+</h3>
-            <p>Cloud Experts</p>
-          </div>
-          <div class="stat">
-            <h3>40%+</h3>
-            <p>Avg Cost Savings</p>
-          </div>
+          <h3>Security & Compliance</h3>
+          <p>ISO 27001, GDPR, HIPAA, HIPAA-compliant solutions with enterprise-grade security</p>
         </div>
-      </div>
-
-      <div class="mission-vision">
-        <div class="mission-box">
-          <h3><i class="fas fa-target"></i> Our Mission</h3>
-          <p>To empower organizations with enterprise-grade cloud solutions and DevOps expertise that reduces complexity, accelerates innovation, and optimizes operational efficiency across AWS, Azure, and GCP.</p>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <h3>24/7 Support & Optimization</h3>
+          <p>Round-the-clock monitoring, optimization, and dedicated support teams</p>
         </div>
-        <div class="vision-box">
-          <h3><i class="fas fa-eye"></i> Our Vision</h3>
-          <p>To be the trusted cloud transformation partner for enterprises globally, known for delivering secure, scalable, and cost-efficient cloud solutions with exceptional customer success.</p>
-        </div>
-      </div>
-
-      <div class="values-section">
-        <h2>Our Core Values</h2>
-        <div class="values-grid">
-          <div class="value-card">
-            <div class="value-icon">🏆</div>
-            <h4>Customer Success</h4>
-            <p>Your success is our success. We're committed to delivering measurable business outcomes and 24/7 support</p>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-bolt"></i>
           </div>
-          <div class="value-card">
-            <div class="value-icon">🤝</div>
-            <h4>Technical Excellence</h4>
-            <p>Certified experts with deep platform knowledge delivering industry best practices and cutting-edge solutions</p>
-          </div>
-          <div class="value-card">
-            <div class="value-icon">🔐</div>
-            <h4>Security First</h4>
-            <p>Enterprise-grade security and compliance standards embedded in every solution we deliver</p>
-          </div>
-          <div class="value-card">
-            <div class="value-icon">💡</div>
-            <h4>Innovation</h4>
-            <p>Continuously exploring new technologies and methodologies to stay ahead of industry trends</p>
-          </div>
+          <h3>Faster Deployment</h3>
+          <p>90% faster provisioning and 40%+ cost savings through intelligent automation</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Team Section -->
-  <section class="team-section">
-    <div class="container">
-      <h2>Our Leadership Team</h2>
-      <div class="team-grid">
-        <div class="team-card">
-          <div class="team-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
-          <h4>John Sharma</h4>
-          <p>CEO & Founder</p>
-          <small>Visionary leader with 15+ years in tech</small>
-        </div>
-        <div class="team-card">
-          <div class="team-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
-          <h4>Sarah Johnson</h4>
-          <p>CTO</p>
-          <small>Tech innovator and architecture expert</small>
-        </div>
-        <div class="team-card">
-          <div class="team-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
-          <h4>Rajesh Kumar</h4>
-          <p>Operations Head</p>
-          <small>Strategic planner and process expert</small>
-        </div>
-      </div>
+  <!-- CTA Section -->
+  <section class="cta">
+    <div class="cta-content">
+      <h2>Accelerate Your Cloud Transformation Today</h2>
+      <p>Get expert guidance from cloud architects and DevOps specialists</p>
+      <button class="btn btn-secondary" onclick="window.location.href='/contact'">Get Free Cloud Assessment</button>
     </div>
   </section>
 

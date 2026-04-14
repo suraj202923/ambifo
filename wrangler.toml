@@ -13,3 +13,23 @@ directory = "public/static"
 [[kv_namespaces]]
 binding = "ambifo"
 id = "9638d38af59d42b28c4b71710a917795"
+
+# Routes configuration
+[env.production]
+name = "ambifo"
+routes = [
+  { pattern = "ambifo.cloud/*", zone_name = "ambifo.cloud" }
+]
+kv_namespaces = [
+  { binding = "ambifo", id = "9638d38af59d42b28c4b71710a917795", preview_id = "9638d38af59d42b28c4b71710a917795" }
+]
+
+[env.staging]
+name = "ambifo-staging"
+kv_namespaces = [
+  { binding = "ambifo", id = "9638d38af59d42b28c4b71710a917795", preview_id = "9638d38af59d42b28c4b71710a917795" }
+]
+
+# Analytics settings
+[analytics]
+enabled = true

@@ -103,17 +103,53 @@ export default {
       '/contact': '/contact.html',
       '/privacy-policy': '/privacy-policy.html',
       '/terms': '/terms.html',
+      '/cloud-migration': '/cloud-migration.html',
+      '/cloud-devops': '/cloud-devops.html',
+      '/cloud-security': '/cloud-security.html',
+      '/cloud-finops': '/cloud-finops.html',
+      '/managed-cloud': '/managed-cloud.html',
+      '/ai-ml': '/ai-ml.html',
     };
 
     if (pageRoutes[pathname]) {
       assetPath = pageRoutes[pathname];
     }
 
+    // Determine cache headers based on file type
+    const cacheHeaders = {
+      'html': 'public, max-age=3600', // 1 hour for HTML
+      'css': 'public, max-age=31536000, immutable', // 1 year for CSS
+      'js': 'public, max-age=31536000, immutable', // 1 year for JS
+      'jpg': 'public, max-age=31536000, immutable',
+      'jpeg': 'public, max-age=31536000, immutable',
+      'png': 'public, max-age=31536000, immutable',
+      'gif': 'public, max-age=31536000, immutable',
+      'svg': 'public, max-age=31536000, immutable',
+      'webp': 'public, max-age=31536000, immutable',
+      'woff': 'public, max-age=31536000, immutable',
+      'woff2': 'public, max-age=31536000, immutable',
+    };
+
+    // Get file extension for cache control
+    const ext = pathname.split('.').pop().toLowerCase();
+    const cacheControl = cacheHeaders[ext] || 'public, max-age=3600';
+
     // Serve static files (HTML, CSS, JS, images, etc.)
     if (env.ASSETS) {
       const response = await env.ASSETS.fetch(new Request(new URL(assetPath, url)));
       if (response.status === 200) {
-        return response;
+        // Create new response with cache headers
+        const newHeaders = new Headers(response.headers);
+        newHeaders.set('Cache-Control', cacheControl);
+        newHeaders.set('X-Content-Type-Options', 'nosniff');
+        newHeaders.set('X-Frame-Options', 'SAMEORIGIN');
+        newHeaders.set('X-XSS-Protection', '1; mode=block');
+        
+        return new Response(response.body, {
+          status: response.status,
+          statusText: response.statusText,
+          headers: newHeaders,
+        });
       }
     }
 

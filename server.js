@@ -44,6 +44,31 @@ app.get('/terms', (req, res) => {
   res.render('terms');
 });
 
+// Service detail routes
+app.get('/cloud-migration', (req, res) => {
+  res.render('cloud-migration');
+});
+
+app.get('/cloud-devops', (req, res) => {
+  res.render('cloud-devops');
+});
+
+app.get('/cloud-finops', (req, res) => {
+  res.render('cloud-finops');
+});
+
+app.get('/cloud-security', (req, res) => {
+  res.render('cloud-security');
+});
+
+app.get('/managed-cloud', (req, res) => {
+  res.render('managed-cloud');
+});
+
+app.get('/ai-ml', (req, res) => {
+  res.render('ai-ml');
+});
+
 // Contact form handler (API endpoint)
 app.post('/api/contact', (req, res) => {
   const { name, email, subject, message } = req.body;

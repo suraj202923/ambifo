@@ -1,175 +1,118 @@
-// Ambifo Premium Three.js Banner with Post-Processing
+// Ambifo Three.js Banner Animation
 (function() {
-  // Dynamically load Three.js with addons
-  const script = document.createElement('script');
-  script.type = 'importmap';
-  script.textContent = JSON.stringify({
-    imports: {
-      three: "https://unpkg.com/three@0.160.0/build/three.module.js",
-      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-    }
-  });
-  document.head.appendChild(script);
-
-  // Wait for DOM and then load Three.js
-  Promise.all([
-    import('https://unpkg.com/three@0.160.0/build/three.module.js'),
-    import('https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/EffectComposer.js'),
-    import('https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/RenderPass.js'),
-    import('https://unpkg.com/three@0.160.0/examples/jsm/postprocessing/UnrealBloomPass.js')
-  ]).then(([THREE, EffectComposer, RenderPass, UnrealBloomPass]) => {
+  function loadThreeJSBanner() {
     const container = document.getElementById('canvas-container');
-    if (!container) return;
-
-    // Force container styling - CRITICAL
-    container.setAttribute('style', 'display: block !important; width: 100% !important; height: 100% !important; background-color: #3a3a3a !important; background-image: none !important; position: absolute; top: 0; left: 0; z-index: 5;');
-
-    let scene, camera, renderer, composer, clock;
-    let particles;
-
-    function init() {
-      // Get container dimensions
-      const width = container.clientWidth || window.innerWidth;
-      const height = container.clientHeight || 900;
-
-      // 1. Scene & Camera
-      scene = new THREE.Scene();
-      scene.background = new THREE.Color(0x3a3a3a);
-      scene.fog = null;
-      camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
-      camera.position.set(0, 2, 12);
-
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, preserveDrawingBuffer: true });
-      renderer.setSize(width, height);
-      renderer.setPixelRatio(window.devicePixelRatio);
-      renderer.toneMapping = THREE.ReinhardToneMapping;
-      renderer.setClearColor(0x3a3a3a, 1);
-      renderer.autoClear = true;
-      renderer.autoClearColor = true;
-      
-      const canvas = renderer.domElement;
-      canvas.setAttribute('style', 'display: block !important; width: 100% !important; height: 100% !important; background-color: #3a3a3a !important;');
-      container.appendChild(canvas);
-
-      clock = new THREE.Clock();
-
-      // 2. Post-Processing (Cinematic Bloom/Glow)
-      const renderScene = new RenderPass.RenderPass(scene, camera);
-      renderScene.clearColor = new THREE.Color(0x3a3a3a);
-      renderScene.clearAlpha = 1.0;
-      
-      const bloomPass = new UnrealBloomPass.UnrealBloomPass(
-        new THREE.Vector2(width, height),
-        1.5,
-        0.4,
-        0.85
-      );
-      bloomPass.threshold = 0.2;
-      bloomPass.strength = 1.2;
-      bloomPass.radius = 1.0;
-
-      composer = new EffectComposer.EffectComposer(renderer);
-      composer.addPass(renderScene);
-      composer.addPass(bloomPass);
-      
-      // CRITICAL: Set clear color for both renderer and pass
-      renderer.setClearColor(0x3a3a3a, 1);
-      renderScene.clearColor = new THREE.Color(0x3a3a3a);
-      renderScene.clearAlpha = 1.0;
-
-      // 3. Cinematic Grid
-      const gridHelper = new THREE.GridHelper(40, 40, 0x0fb8a9, 0x051d1f);
-      gridHelper.position.y = -2;
-      gridHelper.material.opacity = 0.15;
-      gridHelper.material.transparent = true;
-      scene.add(gridHelper);
-
-      // 4. Blinking Particles (The Ambient Data)
-      const pCount = 1000;
-      const pGeo = new THREE.BufferGeometry();
-      const pPos = new Float32Array(pCount * 3);
-      for (let i = 0; i < pCount; i++) {
-        pPos[i * 3] = (Math.random() - 0.5) * 30;
-        pPos[i * 3 + 1] = Math.random() * 15;
-        pPos[i * 3 + 2] = (Math.random() - 0.5) * 20;
-      }
-      pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-      const pMat = new THREE.PointsMaterial({
-        color: 0x0fb8a9,
-        size: 0.04,
-        transparent: true,
-        blending: THREE.AdditiveBlending
-      });
-      particles = new THREE.Points(pGeo, pMat);
-      scene.add(particles);
-
-      // 5. Rising Data Bars (Removed - User Request)
-      // Bars removed to focus on particles and grid
+    if (!container) {
+      console.log('Canvas container not found, retrying...');
+      setTimeout(loadThreeJSBanner, 100);
+      return;
     }
 
-    function animate() {
-      requestAnimationFrame(animate);
-      const t = clock.getElapsedTime();
-
-      // Animate particles
-      particles.material.opacity = 0.3 + Math.abs(Math.sin(t * 0.5)) * 0.7;
-      particles.rotation.y = t * 0.02;
-
-      // CRITICAL: Force dark grey every single frame
-      renderer.setClearColor(0x3a3a3a, 1);
-      renderer.clear(true, true, true);
-      
-      composer.render();
+    // Check if Three.js is available
+    if (typeof THREE === 'undefined') {
+      const script = document.createElement('script');
+      script.src = 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js';
+      script.onload = () => {
+        console.log('Three.js loaded from CDN');
+        initBanner();
+      };
+      script.onerror = () => {
+        console.error('Failed to load Three.js');
+      };
+      document.head.appendChild(script);
+      return;
     }
 
-    window.addEventListener('resize', () => {
-      const width = container.clientWidth || window.innerWidth;
-      const height = container.clientHeight || 900;
-      
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-      renderer.setSize(width, height);
-      composer.setSize(width, height);
-    });
+    initBanner();
 
-    init();
-    animate();
-    
-    // CRITICAL: Lock background color permanently
-    const lockBackgroundColor = () => {
+    function initBanner() {
       try {
-        const hero = document.querySelector('.hero');
-        const container = document.getElementById('canvas-container');
+        const width = container.clientWidth || window.innerWidth;
+        const height = container.clientHeight || 600;
+
+        // Scene setup
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x3a3a3a);
+
+        // Camera
+        const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000);
+        camera.position.z = 12;
+
+        // Renderer
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        renderer.setSize(width, height);
+        renderer.setPixelRatio(window.devicePixelRatio || 1);
+        renderer.setClearColor(0x3a3a3a, 1);
+        container.appendChild(renderer.domElement);
+
+        // Clock for animations
+        const clock = new THREE.Clock();
+
+        // Add grid
+        const gridHelper = new THREE.GridHelper(40, 40, 0x0fb8a9, 0x051d1f);
+        gridHelper.position.y = -2;
+        gridHelper.material.opacity = 0.15;
+        gridHelper.material.transparent = true;
+        scene.add(gridHelper);
+
+        // Add particles
+        const particleCount = 1000;
+        const positions = new Float32Array(particleCount * 3);
         
-        if (hero) {
-          hero.style.backgroundColor = '#3a3a3a';
-          hero.style.backgroundImage = 'linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%)';
+        for (let i = 0; i < particleCount * 3; i += 3) {
+          positions[i] = (Math.random() - 0.5) * 30;
+          positions[i + 1] = Math.random() * 15;
+          positions[i + 2] = (Math.random() - 0.5) * 20;
         }
-        
-        if (container) {
-          container.style.backgroundColor = '#3a3a3a';
-          container.style.backgroundImage = 'none';
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+        const material = new THREE.PointsMaterial({
+          color: 0x0fb8a9,
+          size: 0.04,
+          transparent: true,
+          blending: THREE.AdditiveBlending
+        });
+
+        const points = new THREE.Points(geometry, material);
+        scene.add(points);
+
+        // Animation loop
+        function animate() {
+          requestAnimationFrame(animate);
+          
+          const time = clock.getElapsedTime();
+          points.rotation.y = time * 0.02;
+          material.opacity = 0.3 + Math.abs(Math.sin(time * 0.5)) * 0.7;
+
+          renderer.render(scene, camera);
         }
-        
-        if (renderer && renderer.domElement) {
-          renderer.domElement.style.backgroundColor = '#3a3a3a';
-          renderer.setClearColor(0x3a3a3a, 1);
-        }
-      } catch(e) {}
-    };
-    
-    // Run immediately and every 100ms
-    lockBackgroundColor();
-    setInterval(lockBackgroundColor, 100);
-    
-    // Also lock on visibility change
-    document.addEventListener('visibilitychange', lockBackgroundColor);
-    window.addEventListener('focus', lockBackgroundColor);
-    window.addEventListener('load', lockBackgroundColor);
-    document.addEventListener('DOMContentLoaded', lockBackgroundColor);
-  }).catch(error => {
-    console.error('Failed to load Three.js premium banner:', error);
-  });
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+          const newWidth = container.clientWidth || window.innerWidth;
+          const newHeight = container.clientHeight || 600;
+          
+          camera.aspect = newWidth / newHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(newWidth, newHeight);
+        });
+
+        animate();
+        console.log('Three.js banner successfully initialized!');
+      } catch (error) {
+        console.error('Error initializing Three.js banner:', error);
+      }
+    }
+  }
+
+  // Start when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadThreeJSBanner);
+  } else {
+    setTimeout(loadThreeJSBanner, 0);
+  }
 })();
 
 // Mobile menu toggle
@@ -205,13 +148,50 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-    // Close menu when clicking on a link
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.addEventListener('click', function() {
+    // Handle dropdown items - close menu when clicking on actual navigation links (not dropdown toggle)
+    document.querySelectorAll('.dropdown-item').forEach(item => {
+      item.addEventListener('click', function() {
         navMenu.style.display = 'none';
       });
     });
+
+    // Close menu when clicking on navigation links (not Resources dropdown)
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        // Don't close menu if clicking on Resources dropdown toggle
+        if (this.textContent.trim() !== 'Resources') {
+          navMenu.style.display = 'none';
+        } else {
+          e.preventDefault();
+        }
+      });
+    });
   }
+
+  // Dropdown menu handler for mobile/touch
+  const dropdowns = document.querySelectorAll('.dropdown');
+  dropdowns.forEach(dropdown => {
+    const link = dropdown.querySelector('.nav-link');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    
+    if (link && menu) {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        // Toggle dropdown visibility on mobile
+        if (window.innerWidth < 768) {
+          const isHidden = menu.style.display === 'none' || !menu.style.display;
+          dropdowns.forEach(d => {
+            const m = d.querySelector('.dropdown-menu');
+            if (m) m.style.display = 'none';
+          });
+          if (isHidden) {
+            menu.style.display = 'block';
+            menu.style.position = 'static';
+          }
+        }
+      });
+    }
+  });
 
   // Update active nav link on page load
   updateActiveNavLink();
@@ -307,6 +287,13 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Consultation Modal Functions
+function showConsultationModal() {
+  const modal = document.getElementById('consultationModal');
+  if (modal) {
+    modal.classList.add('show');
+  }
+}
+
 function closeConsultationModal() {
   const modal = document.getElementById('consultationModal');
   if (modal) {
@@ -386,30 +373,50 @@ function handleConsultationSubmit(event) {
     } else {
       throw new Error(data.message || 'Failed to submit');
     }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('Error submitting consultation. Please try again.');
+  });
+}
+
+// Dropdown Menu Click Handler
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdowns = document.querySelectorAll('.dropdown');
+  
+  dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.nav-link');
+    const menu = dropdown.querySelector('.dropdown-menu');
     
-    // Reset button
-    submitBtn.textContent = originalText;
-    submitBtn.disabled = false;
+    if (toggle && menu) {
+      // Click handler for dropdown toggle
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Close other dropdowns
+        dropdowns.forEach(d => {
+          if (d !== dropdown) {
+            d.classList.remove('active');
+          }
+        });
+        
+        // Toggle current dropdown
+        dropdown.classList.toggle('active');
+      });
+      
+      // Prevent menu from closing when clicking items (they navigate automatically)
+      menu.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    }
   });
   
-  // TODO: Replace with actual API endpoint
-  // fetch('/api/consultation', {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(consultationData)
-  // })
-  // .then(response => response.json())
-  // .then(data => {
-  //   if (data.success) {
-  //     // Show success message
-  //   }
-  // })
-  // .catch(error => console.error('Error:', error));
-}
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    dropdowns.forEach(dropdown => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('active');
+      }
+    });
+  });
+});
 
 // Close modal when clicking on overlay
 document.addEventListener('DOMContentLoaded', function() {
