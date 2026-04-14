@@ -1,5 +1,5 @@
 /**
- * Cloudflare Worker - Servers static files and API
+ * Cloudflare Worker - Serves static files and API
  */
 
 export default {
@@ -34,20 +34,29 @@ export default {
       }
     }
 
-    // Serve static files (including pages)
+    // Map routes to HTML files
+    let assetPath = pathname;
+    const pageRoutes = {
+      '/': '/index.html',
+      '/about': '/about.html',
+      '/services': '/services.html',
+      '/portfolio': '/portfolio.html',
+      '/blog': '/blog.html',
+      '/contact': '/contact.html',
+      '/privacy-policy': '/privacy-policy.html',
+      '/terms': '/terms.html',
+    };
+
+    if (pageRoutes[pathname]) {
+      assetPath = pageRoutes[pathname];
+    }
+
+    // Serve static files (HTML, CSS, JS, images, etc.)
     if (env.ASSETS) {
-      const response = await env.ASSETS.fetch(request);
-      
-      // If 404 on a path, try index.html for client-side routing
-      if (response.status === 404 && !pathname.includes('.')) {
-        const indexUrl = new URL(pathname.endsWith('/') ? pathname + 'index.html' : pathname + '.html', url);
-        const indexResponse = await env.ASSETS.fetch(new Request(indexUrl, request));
-        if (indexResponse.status === 200) {
-          return indexResponse;
-        }
+      const response = await env.ASSETS.fetch(new Request(new URL(assetPath, url)));
+      if (response.status === 200) {
+        return response;
       }
-      
-      return response;
     }
 
     return new Response('Not Found', { status: 404 });
