@@ -1,9 +1,9 @@
 /**
- * Cloudflare Worker - API handler and routing
+ * Cloudflare Worker - API handler and static file server
  */
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
@@ -41,6 +41,15 @@ export default {
       );
     }
 
-    return new Response('Not found', { status: 404 });
+    // Serve static files from the site bucket
+    let response = await env.ASSETS.fetch(request);
+    
+    // If 404, try to serve index.html for SPA routing
+    if (response.status === 404) {
+      const indexRequest = new Request(new URL('/', url), request);
+      response = await env.ASSETS.fetch(indexRequest);
+    }
+
+    return response;
   },
 };
