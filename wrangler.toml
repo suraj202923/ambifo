@@ -1,10 +1,11 @@
-name = "ambifo-technology"
+# Cloudflare Workers configuration
+# Note: For best results with Express, deploy to Vercel or a Node.js server instead
+# This configuration is kept for reference only
+
+name = "ambifo"
 main = "server.js"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
-[env.production]
-vars = { ENVIRONMENT = "production" }
-
-[build]
-command = "npm install"
+# Recommended: Use Vercel for Express apps
+# See vercel.json for Vercel deployment configuration

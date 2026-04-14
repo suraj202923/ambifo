@@ -59,8 +59,13 @@ app.use((req, res) => {
   res.status(404).render('404');
 });
 
-// Start server
+// Start server - only for local development
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`🚀 Ambifo Technology website running on http://localhost:${PORT}`);
-});
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`🚀 Ambifo Technology website running on http://localhost:${PORT}`);
+  });
+}
+
+// Export for Cloudflare Workers and local server
+module.exports = app;
