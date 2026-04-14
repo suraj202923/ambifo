@@ -2,6 +2,18 @@
  * Cloudflare Worker - API handler and static file server
  */
 
+// Route mappings for pages
+const pageRoutes = {
+  '/': '/index.html',
+  '/about': '/about.html',
+  '/services': '/services.html',
+  '/portfolio': '/portfolio.html',
+  '/blog': '/blog.html',
+  '/contact': '/contact.html',
+  '/privacy-policy': '/privacy-policy.html',
+  '/terms': '/terms.html',
+};
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -28,28 +40,56 @@ export default {
             { status: 200, headers: { 'Content-Type': 'application/json' } }
           );
         } catch (err) {
+          console.error('Contact form error:', err);
           return new Response(
-            JSON.stringify({ success: false, message: 'Error' }),
+            JSON.stringify({ success: false, message: 'Error processing request' }),
             { status: 500, headers: { 'Content-Type': 'application/json' } }
           );
         }
       }
 
       return new Response(
-        JSON.stringify({ success: false, message: 'Not found' }),
+        JSON.stringify({ success: false, message: 'API endpoint not found' }),
         { status: 404, headers: { 'Content-Type': 'application/json' } }
       );
     }
 
-    // Serve static files from the site bucket
-    let response = await env.ASSETS.fetch(request);
-    
-    // If 404, try to serve index.html for SPA routing
-    if (response.status === 404) {
-      const indexRequest = new Request(new URL('/', url), request);
-      response = await env.ASSETS.fetch(indexRequest);
-    }
+    try {
+      // Map route to HTML file
+      const htmlFile = pageRoutes[pathname] || pathname;
+      
+      // Try to fetch the mapped route
+      let response;
+      try {
+        const filePath = htmlFile.startsWith('/') ? htmlFile : '/' + htmlFile;
+        response = await env.ASSETS.fetch(new Request(new URL(filePath, url)));
+        
+        if (response.status === 200) {
+          return response;
+        }
+      } catch (err) {
+        console.error(`Error fetching ${htmlFile}:`, err);
+      }
 
-    return response;
+      // Try direct path for static assets
+      try {
+        response = await env.ASSETS.fetch(request);
+        if (response.status === 200) {
+          return response;
+        }
+      } catch (err) {
+        console.error(`Error fetching direct path:`, err);
+      }
+
+      // Return 404
+      try {
+        return await env.ASSETS.fetch(new Request(new URL('/404.html', url)));
+      } catch (err) {
+        return new Response('Not Found', { status: 404 });
+      }
+    } catch (err) {
+      console.error('Worker error:', err);
+      return new Response(`Worker Error: ${err.message}`, { status: 500 });
+    }
   },
 };
