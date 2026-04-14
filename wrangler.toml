@@ -9,3 +9,7 @@ command = "npm run build"
 [assets]
 directory = "public/static"
 
+# KV Namespace for consultation enquiries
+[[kv_namespaces]]
+binding = "CONSULTATION_KV"
+id = "9638d38af59d42b28c4b71710a917795"

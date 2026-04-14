@@ -340,29 +340,61 @@ function handleConsultationSubmit(event) {
     return;
   }
   
-  // Log consultation data (can be replaced with actual API call)
+  // Change button to loading state
+  const submitBtn = document.querySelector('.btn-submit');
+  const originalText = submitBtn.textContent;
+  submitBtn.textContent = 'Submitting...';
+  submitBtn.disabled = true;
+  
+  // Prepare consultation data
   const consultationData = {
     fullName: fullName,
     email: email,
     phone: phone,
     company: company,
-    service: service,
-    timestamp: new Date().toISOString()
+    service: service
   };
   
-  console.log('Consultation Request:', consultationData);
-  
-  // Show success message
-  const form = document.getElementById('consultationForm');
-  const successMsg = document.getElementById('successMessage');
-  
-  if (form) form.style.display = 'none';
-  if (successMsg) successMsg.style.display = 'block';
-  
-  // Auto-close after 3 seconds
-  setTimeout(function() {
-    closeConsultationModal();
-  }, 3000);
+  // Send to Cloudflare Worker API
+  fetch('/api/consultation', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(consultationData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      console.log('Consultation saved:', data.id);
+      
+      // Show success message
+      const form = document.getElementById('consultationForm');
+      const successMsg = document.getElementById('successMessage');
+      
+      if (form) form.style.display = 'none';
+      if (successMsg) successMsg.style.display = 'block';
+      
+      // Reset button
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      
+      // Auto-close after 3 seconds
+      setTimeout(function() {
+        closeConsultationModal();
+      }, 3000);
+    } else {
+      throw new Error(data.message || 'Failed to submit');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error submitting consultation. Please try again.');
+    
+    // Reset button
+    submitBtn.textContent = originalText;
+    submitBtn.disabled = false;
+  });
   
   // TODO: Replace with actual API endpoint
   // fetch('/api/consultation', {
