@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio - Ambifo Technology</title>
+  <link rel="icon" type="image/png" href="/images/ambifologo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="/" class="logo-link">
+          <img src="/images/ambifologo.png" alt="Ambifo Logo" class="logo">
+        </a>
+        <span class="brand-name">Ambifo</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/about" class="nav-link">About</a></li>
+        <li><a href="/services" class="nav-link">Services</a></li>
+        <li><a href="/portfolio" class="nav-link active">Portfolio</a></li>
+        <li><a href="/blog" class="nav-link">Blog</a></li>
+        <li><a href="/contact" class="nav-link cta-btn">Contact Us</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Banner -->
+  <section class="hero">
+    <div id="canvas-container" class="hero-canvas-3d"></div>
+    <div class="hero-content">
+      <h1>Our Portfolio</h1>
+      <p>Showcasing Excellence Across Industries</p>
+    </div>
+    <canvas id="ambifoCanvas" class="hero-canvas"></canvas>
+    <div class="hero-background"></div>
+  </section>
+
+  <!-- Filter Buttons -->
+  <section class="portfolio-section">
+    <div class="container">
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="mobile">Mobile</button>
+        <button class="filter-btn" data-filter="cloud">Cloud</button>
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div class="portfolio-grid">
+        <div class="portfolio-item" data-category="web">
+          <div class="portfolio-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+          <div class="portfolio-info">
+            <h3>E-Commerce Platform</h3>
+            <p>Full-stack e-commerce solution with 50k+ daily users</p>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="mobile">
+          <div class="portfolio-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+          <div class="portfolio-info">
+            <h3>Fitness Tracking App</h3>
+            <p>Cross-platform mobile app with AI-powered recommendations</p>
+            <span class="tech-tag">React Native</span>
+            <span class="tech-tag">Firebase</span>
+            <span class="tech-tag">TensorFlow</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="cloud">
+          <div class="portfolio-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);"></div>
+          <div class="portfolio-info">
+            <h3>Cloud Infrastructure Migration</h3>
+            <p>Migrated legacy systems to AWS with zero downtime</p>
+            <span class="tech-tag">AWS</span>
+            <span class="tech-tag">Docker</span>
+            <span class="tech-tag">Kubernetes</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="web">
+          <div class="portfolio-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+          <div class="portfolio-info">
+            <h3>SaaS Dashboard</h3>
+            <p>Real-time analytics dashboard for 100+ enterprise clients</p>
+            <span class="tech-tag">Vue.js</span>
+            <span class="tech-tag">GraphQL</span>
+            <span class="tech-tag">MongoDB</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="mobile">
+          <div class="portfolio-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+          <div class="portfolio-info">
+            <h3>Banking Mobile App</h3>
+            <p>Secure fintech app with real-time transaction processing</p>
+            <span class="tech-tag">Swift</span>
+            <span class="tech-tag">Kotlin</span>
+            <span class="tech-tag">Blockchain</span>
+          </div>
+        </div>
+
+        <div class="portfolio-item" data-category="cloud">
+          <div class="portfolio-image" style="background: linear-gradient(135deg, #ff9566 0%, #ff6b6b 100%);"></div>
+          <div class="portfolio-info">
+            <h3>IoT Platform</h3>
+            <p>Connected devices platform managing 10M+ data points</p>
+            <span class="tech-tag">Azure IoT</span>
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Time Series DB</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-box">
+          <h3>500+</h3>
+          <p>Projects Delivered</p>
+        </div>
+        <div class="stat-box">
+          <h3>150+</h3>
+          <p>Happy Clients</p>
+        </div>
+        <div class="stat-box">
+          <h3>1000+</h3>
+          <p>Team Hours</p>
+        </div>
+        <div class="stat-box">
+          <h3>99.9%</h3>
+          <p>Uptime</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Ambifo Technology</h4>
+        <p>Delivering innovative digital solutions worldwide</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Ambifo Technology Pvt Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+  <script>
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const filter = this.dataset.filter;
+        
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+
+        document.querySelectorAll('.portfolio-item').forEach(item => {
+          if (filter === 'all' || item.dataset.category === filter) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

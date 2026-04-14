@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services - Ambifo Technology</title>
+  <link rel="icon" type="image/png" href="/images/ambifologo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="/" class="logo-link">
+          <img src="/images/ambifologo.png" alt="Ambifo Logo" class="logo">
+        </a>
+        <span class="brand-name">Ambifo</span>
+      </div>
+      <ul class="nav-menu">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/about" class="nav-link">About</a></li>
+        <li><a href="/services" class="nav-link active">Services</a></li>
+        <li><a href="/portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="/blog" class="nav-link">Blog</a></li>
+        <li><a href="/contact" class="nav-link cta-btn">Contact Us</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section with Banner -->
+  <section class="hero">
+    <div id="canvas-container" class="hero-canvas-3d"></div>
+    <div class="hero-content">
+      <h1>Our Services</h1>
+      <p>Comprehensive Solutions for Every Business Need</p>
+    </div>
+    <canvas id="ambifoCanvas" class="hero-canvas"></canvas>
+    <div class="hero-background"></div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="services-section">
+    <div class="container">
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3>Web Development</h3>
+          <p>Custom web applications built with modern technologies and best practices for optimal performance.</p>
+          <ul class="service-list">
+            <li>✓ Responsive Design</li>
+            <li>✓ Full-Stack Development</li>
+            <li>✓ API Integration</li>
+            <li>✓ Cloud Deployment</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Mobile Apps</h3>
+          <p>Native and cross-platform mobile applications that deliver exceptional user experiences.</p>
+          <ul class="service-list">
+            <li>✓ iOS Development</li>
+            <li>✓ Android Development</li>
+            <li>✓ Cross-Platform Apps</li>
+            <li>✓ App Store Publishing</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <h3>Cloud Solutions</h3>
+          <p>Scalable cloud infrastructure and migrations for maximum uptime and reliability.</p>
+          <ul class="service-list">
+            <li>✓ AWS Solutions</li>
+            <li>✓ Azure Services</li>
+            <li>✓ Migration Services</li>
+            <li>✓ DevOps</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3>Data & Analytics</h3>
+          <p>Advanced data solutions to unlock insights and drive intelligent business decisions.</p>
+          <ul class="service-list">
+            <li>✓ Data Engineering</li>
+            <li>✓ Business Intelligence</li>
+            <li>✓ Machine Learning</li>
+            <li>✓ Data Visualization</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Cybersecurity</h3>
+          <p>Comprehensive security solutions to protect your digital assets and data.</p>
+          <ul class="service-list">
+            <li>✓ Security Audits</li>
+            <li>✓ Penetration Testing</li>
+            <li>✓ Compliance</li>
+            <li>✓ Threat Management</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #ff9566 0%, #ff6b6b 100%);">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3>Consulting</h3>
+          <p>Strategic technology consulting to transform and optimize your business operations.</p>
+          <ul class="service-list">
+            <li>✓ Digital Strategy</li>
+            <li>✓ Process Optimization</li>
+            <li>✓ Tech Stack Assessment</li>
+            <li>✓ Project Management</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="process-section">
+    <div class="container">
+      <h2>Our Development Process</h2>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h4>Discovery</h4>
+          <p>Understanding your business goals and requirements</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h4>Planning</h4>
+          <p>Creating a detailed roadmap and technical architecture</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h4>Development</h4>
+          <p>Building with best practices and clean code</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h4>Testing</h4>
+          <p>Rigorous quality assurance and optimization</p>
+        </div>
+        <div class="step">
+          <div class="step-number">5</div>
+          <h4>Deployment</h4>
+          <p>Smooth launch with monitoring and support</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Ambifo Technology</h4>
+        <p>Delivering innovative digital solutions worldwide</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 Ambifo Technology Pvt Ltd. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
