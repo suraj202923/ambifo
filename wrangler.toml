@@ -7,18 +7,5 @@ compatibility_flags = ["nodejs_compat"]
 command = "npm run build"
 
 [site]
-bucket = "./public/static"
-
-[env.development]
-name = "ambifo-dev"
-vars = { ENVIRONMENT = "development" }
-
-[env.production]
-name = "ambifo-prod"
-vars = { ENVIRONMENT = "production" }
-routes = [{ pattern = "example.com/*", zone_id = "YOUR_ZONE_ID" }]
-
-[[env.development.routes]]
-pattern = "http://127.0.0.1:8787/*"
-zone_name = ""
+bucket = "public/static"
 
