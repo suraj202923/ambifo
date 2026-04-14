@@ -37,9 +37,9 @@ export default {
           status: 'pending'
         };
 
-        // Use CONSULTATION_KV binding (must be set in wrangler.toml)
-        if (env.CONSULTATION_KV) {
-          await env.CONSULTATION_KV.put(
+        // Use ambifo KV binding
+        if (env.ambifo) {
+          await env.ambifo.put(
             consultationId,
             JSON.stringify(consultationData),
             { expirationTtl: 2592000 } // 30 days
