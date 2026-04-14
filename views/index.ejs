@@ -138,6 +138,56 @@
     </div>
   </footer>
 
+  <!-- Consultation Popup Modal -->
+  <div id="consultationModal" class="consultation-modal">
+    <div class="consultation-modal-content">
+      <button class="close-modal" onclick="closeConsultationModal()">&times;</button>
+      <div class="modal-header">
+        <h2>Get Free Cloud Consultation</h2>
+        <p>Schedule a 30-minute consultation with our cloud experts</p>
+      </div>
+      <form id="consultationForm" class="consultation-form" onsubmit="handleConsultationSubmit(event)">
+        <!-- Row 1: Service & Company -->
+        <div class="form-group">
+          <label for="service">Service *</label>
+          <select id="service" name="service" required>
+            <option value="">Select service</option>
+            <option value="Cloud Migration">Cloud Migration</option>
+            <option value="DevOps">DevOps</option>
+            <option value="FinOps">FinOps</option>
+            <option value="Security">Security</option>
+            <option value="Managed">Managed Services</option>
+            <option value="AI/ML">AI/ML</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company" placeholder="Your Company">
+        </div>
+        <!-- Row 2: Full Name -->
+        <div class="form-group form-full-width">
+          <label for="fullName">Full Name *</label>
+          <input type="text" id="fullName" name="fullName" required placeholder="Full Name">
+        </div>
+        <!-- Row 3: Phone & Email -->
+        <div class="form-group">
+          <label for="phone">Phone *</label>
+          <input type="tel" id="phone" name="phone" required placeholder="Phone">
+        </div>
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required placeholder="Email">
+        </div>
+        <!-- Row 4: Button -->
+        <button type="submit" class="btn-submit btn-submit-full">Schedule Consultation</button>
+      </form>
+      <div id="successMessage" class="success-message" style="display: none;">
+        <i class="fas fa-check-circle"></i>
+        <p>Thank you! We'll contact you shortly to confirm your consultation.</p>
+      </div>
+    </div>
+  </div>
+
   <script src="/js/main.js"></script>
 </body>
 </html>

@@ -1150,8 +1150,193 @@ body {
   padding-right: 20px;
 }
 
+/* ===== Consultation Modal ===== */
+.consultation-modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+  overflow-y: auto;
+}
+
+.consultation-modal.show {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.consultation-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  max-width: 380px;
+  width: 95%;
+  position: relative;
+  animation: slideUp 0.3s ease;
+  aspect-ratio: 1 / 1.1;
+  overflow-y: auto;
+  max-height: 85vh;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close-modal {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #999;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color 0.3s ease;
+  padding: 0;
+}
+
+.close-modal:hover {
+  color: var(--primary-color);
+}
+
+.modal-header {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.modal-header h2 {
+  font-size: 22px;
+  color: var(--dark-text);
+  margin-bottom: 5px;
+}
+
+.modal-header p {
+  color: var(--light-text);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.consultation-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  grid-auto-flow: row;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.form-full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--dark-text);
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 8px 10px;
+  border: 2px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: var(--card-bg);
+  color: var(--dark-text);
+  min-height: 35px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(10, 36, 99, 0.1);
+}
+
+.btn-submit {
+  padding: 9px 20px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  margin-top: 6px;
+  min-height: 35px;
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(15, 184, 169, 0.4);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+.btn-submit-full {
+  grid-column: 1 / -1;
+}
+
+.success-message {
+  text-align: center;
+  padding: 15px;
+  background: #f0f9f7;
+  border-radius: 8px;
+  border-left: 4px solid var(--secondary-color);
+}
+
+.success-message i {
+  font-size: 36px;
+  color: var(--secondary-color);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.success-message p {
+  color: var(--light-text);
+  font-size: 13px;
+  margin: 0;
+  line-height: 1.3;
+}
+
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
+  body {
+    padding-top: 100px;
+  }
+
   .hamburger {
     display: flex;
   }
@@ -1211,9 +1396,76 @@ body {
   .contact-form h2 {
     font-size: 24px;
   }
+
+  /* Responsive Consultation Modal */
+  .consultation-modal-content {
+    padding: 18px;
+    max-width: 90%;
+    aspect-ratio: 1 / 1.15;
+  }
+
+  .modal-header h2 {
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  .modal-header p {
+    font-size: 12px;
+  }
+
+  .close-modal {
+    font-size: 22px;
+    top: 8px;
+    right: 8px;
+  }
+
+  .consultation-form {
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+    margin-bottom: 3px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 7px 9px;
+    font-size: 12px;
+    min-height: 33px;
+  }
+
+  .btn-submit {
+    padding: 8px 16px;
+    font-size: 12px;
+    margin-top: 5px;
+    min-height: 33px;
+  }
+
+  .consultation-form {
+    gap: 8px;
+  }
+
+  .success-message {
+    padding: 12px;
+  }
+
+  .success-message i {
+    font-size: 32px;
+    margin-bottom: 6px;
+  }
+
+  .success-message p {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 480px) {
+  body {
+    padding-top: 85px;
+  }
+
   .nav-container {
     min-height: 100px;
     height: auto;
@@ -1259,6 +1511,73 @@ body {
 
   .page-header p {
     font-size: 16px;
+  }
+
+  /* Mobile Consultation Modal - Extra Small Devices */
+  .consultation-modal-content {
+    padding: 12px;
+    max-width: 96%;
+    border-radius: 10px;
+    aspect-ratio: 1 / 1.2;
+    max-height: 90vh;
+  }
+
+  .modal-header h2 {
+    font-size: 18px;
+    margin-bottom: 3px;
+  }
+
+  .modal-header p {
+    font-size: 11px;
+  }
+
+  .close-modal {
+    font-size: 20px;
+    top: 6px;
+    right: 8px;
+  }
+
+  .form-group {
+    gap: 3px;
+  }
+
+  .form-group label {
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 6px 8px;
+    font-size: 12px;
+    min-height: 32px;
+  }
+
+  .consultation-form {
+    gap: 6px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .btn-submit {
+    padding: 8px 12px;
+    font-size: 12px;
+    margin-top: 4px;
+    min-height: 32px;
+  }
+
+  .success-message {
+    padding: 10px;
+    border-radius: 6px;
+  }
+
+  .success-message i {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  .success-message p {
+    font-size: 13px;
   }
 }
 

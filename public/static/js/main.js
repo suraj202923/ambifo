@@ -296,4 +296,97 @@ document.addEventListener('DOMContentLoaded', function() {
   if (footerYear && footerYear.textContent.includes('2024')) {
     footerYear.textContent = footerYear.textContent.replace('2024', currentYear.toString());
   }
+  
+  // Initialize consultation modal - show after 5 seconds
+  setTimeout(function() {
+    const modal = document.getElementById('consultationModal');
+    if (modal) {
+      modal.classList.add('show');
+    }
+  }, 5000);
+});
+
+// Consultation Modal Functions
+function closeConsultationModal() {
+  const modal = document.getElementById('consultationModal');
+  if (modal) {
+    modal.classList.remove('show');
+    // Reset form
+    const form = document.getElementById('consultationForm');
+    if (form) form.reset();
+    const successMsg = document.getElementById('successMessage');
+    if (successMsg) successMsg.style.display = 'none';
+  }
+}
+
+function handleConsultationSubmit(event) {
+  event.preventDefault();
+  
+  const fullName = document.getElementById('fullName').value;
+  const email = document.getElementById('email').value;
+  const phone = document.getElementById('phone').value;
+  const company = document.getElementById('company').value;
+  const service = document.getElementById('service').value;
+  
+  // Validate required fields
+  if (!fullName || !email || !phone || !service) {
+    alert('Please fill in all required fields');
+    return;
+  }
+  
+  // Validate email
+  if (!isValidEmail(email)) {
+    alert('Please enter a valid email address');
+    return;
+  }
+  
+  // Log consultation data (can be replaced with actual API call)
+  const consultationData = {
+    fullName: fullName,
+    email: email,
+    phone: phone,
+    company: company,
+    service: service,
+    timestamp: new Date().toISOString()
+  };
+  
+  console.log('Consultation Request:', consultationData);
+  
+  // Show success message
+  const form = document.getElementById('consultationForm');
+  const successMsg = document.getElementById('successMessage');
+  
+  if (form) form.style.display = 'none';
+  if (successMsg) successMsg.style.display = 'block';
+  
+  // Auto-close after 3 seconds
+  setTimeout(function() {
+    closeConsultationModal();
+  }, 3000);
+  
+  // TODO: Replace with actual API endpoint
+  // fetch('/api/consultation', {
+  //   method: 'POST',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify(consultationData)
+  // })
+  // .then(response => response.json())
+  // .then(data => {
+  //   if (data.success) {
+  //     // Show success message
+  //   }
+  // })
+  // .catch(error => console.error('Error:', error));
+}
+
+// Close modal when clicking on overlay
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('consultationModal');
+  if (modal) {
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeConsultationModal();
+      }
+    });
+  }
 });
