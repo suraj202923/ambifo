@@ -1,0 +1,9 @@
+name = "ambifo-technology"
+main = "server.js"
+compatibility_date = "2024-01-01"
+
+[env.production]
+vars = { ENVIRONMENT = "production" }
+
+[build]
+command = "npm install"

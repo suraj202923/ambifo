@@ -1,0 +1,5 @@
+{
+  "buildCommand": "npm install",
+  "framework": "nodejs",
+  "framework_version": "18"
+}
