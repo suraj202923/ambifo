@@ -69,6 +69,19 @@ app.get('/ai-ml', (req, res) => {
   res.render('ai-ml');
 });
 
+// New menu routes
+app.get('/expertise', (req, res) => {
+  res.render('expertise');
+});
+
+app.get('/offers', (req, res) => {
+  res.render('offers');
+});
+
+app.get('/careers', (req, res) => {
+  res.render('careers');
+});
+
 // Contact form handler (API endpoint)
 app.post('/api/contact', (req, res) => {
   const { name, email, subject, message } = req.body;

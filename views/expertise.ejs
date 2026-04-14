@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expertise - Ambifo Technology</title>
+  <link rel="icon" type="image/png" href="/images/ambifologo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="/" class="logo-link">
+          <img src="/images/ambifologo.png" alt="Ambifo Logo" class="logo">
+        </a>
+        <span class="brand-name">Ambifo</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="dropdown">
+          <a href="/services" class="nav-link">Consultancy</a>
+          <div class="dropdown-menu">
+            <a href="/cloud-migration" class="dropdown-item">Cloud Migration Services</a>
+            <a href="/cloud-devops" class="dropdown-item">Cloud DevOps & Automation</a>
+            <a href="/cloud-finops" class="dropdown-item">Cloud FinOps & Optimization</a>
+            <a href="/cloud-security" class="dropdown-item">Cloud Security & Compliance</a>
+            <a href="/managed-cloud" class="dropdown-item">Managed Cloud Services</a>
+            <a href="/ai-ml" class="dropdown-item">AI/ML & Modern Applications</a>
+          </div>
+        </li>
+        <li><a href="/expertise" class="nav-link active">Expertise</a></li>
+        <li><a href="/offers" class="nav-link">Offers</a></li>
+        <li><a href="/careers" class="nav-link">Careers</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="nav-link">Resources</a>
+          <div class="dropdown-menu">
+            <a href="/blog" class="dropdown-item">Blog</a>
+            <a href="/portfolio" class="dropdown-item">Case Studies</a>
+          </div>
+        </li>
+        <li><a href="/about" class="nav-link">About</a></li>
+        <li><a href="/contact" class="nav-link cta-btn">Contact Us</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div id="canvas-container" class="hero-canvas-3d"></div>
+    <div class="hero-content">
+      <h1>Our Expertise</h1>
+      <p>Deep technical knowledge across cloud platforms and modern technologies</p>
+    </div>
+    <canvas id="ambifoCanvas" class="hero-canvas"></canvas>
+    <div class="hero-background"></div>
+  </section>
+
+  <!-- Expertise Content -->
+  <section class="services-section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h2>Why We're Your Trusted Cloud Partner</h2>
+        <p style="font-size: 16px; color: var(--light-text); max-width: 700px; margin: 20px auto;">With 500+ successful projects and 150+ enterprise clients, Ambifo brings proven expertise in cloud transformation, DevOps automation, and digital innovation.</p>
+      </div>
+
+      <!-- Cloud Platforms -->
+      <h3 style="text-align: center; margin: 50px 0 40px;">Cloud Platforms</h3>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #FF9900 0%, #FF7700 100%);">
+            <i class="fab fa-aws"></i>
+          </div>
+          <h3>Amazon Web Services</h3>
+          <p>AWS Certified Solutions Architects with expertise in EC2, S3, Lambda, RDS, VPC, and CloudFront for enterprise-scale infrastructure.</p>
+          <ul class="service-list">
+            <li>✓ EC2 & Auto Scaling</li>
+            <li>✓ S3 & Storage Solutions</li>
+            <li>✓ Lambda & Serverless</li>
+            <li>✓ RDS & Databases</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #0078D4 0%, #50E6FF 100%);">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <h3>Microsoft Azure</h3>
+          <p>Azure Certified professionals delivering solutions using VMs, App Services, Cosmos DB, and enterprise security frameworks.</p>
+          <ul class="service-list">
+            <li>✓ VMs & App Services</li>
+            <li>✓ Azure SQL & Cosmos DB</li>
+            <li>✓ Azure DevOps</li>
+            <li>✓ Hybrid Cloud</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #4285F4 0%, #EA4335 100%);">
+            <i class="fas fa-cloud"></i>
+          </div>
+          <h3>Google Cloud Platform</h3>
+          <p>GCP specialists with hands-on experience in Compute Engine, Cloud SQL, BigQuery, and data analytics solutions.</p>
+          <ul class="service-list">
+            <li>✓ Compute & Networking</li>
+            <li>✓ BigQuery & Analytics</li>
+            <li>✓ Cloud Functions</li>
+            <li>✓ Kubernetes Engine</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- DevOps & Automation -->
+      <h3 style="text-align: center; margin: 60px 0 40px;">DevOps & Automation</h3>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <i class="fas fa-cogs"></i>
+          </div>
+          <h3>CI/CD Pipeline Architecture</h3>
+          <p>Building automated deployment pipelines with Jenkins, GitLab CI, GitHub Actions for rapid, reliable releases.</p>
+          <ul class="service-list">
+            <li>✓ Jenkins & GitLab CI</li>
+            <li>✓ GitHub Actions</li>
+            <li>✓ Automated Testing</li>
+            <li>✓ Release Management</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <i class="fas fa-layer-group"></i>
+          </div>
+          <h3>Container & Orchestration</h3>
+          <p>Docker containerization and Kubernetes orchestration for scalable, resilient applications on any cloud.</p>
+          <ul class="service-list">
+            <li>✓ Docker & Containerization</li>
+            <li>✓ Kubernetes (K8s)</li>
+            <li>✓ Enterprise Registries</li>
+            <li>✓ Helm Charts</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            <i class="fas fa-hammer"></i>
+          </div>
+          <h3>Infrastructure as Code</h3>
+          <p>Infrastructure automation using Terraform, CloudFormation, Ansible for reproducible, version-controlled infrastructure.</p>
+          <ul class="service-list">
+            <li>✓ Terraform</li>
+            <li>✓ CloudFormation</li>
+            <li>✓ Ansible</li>
+            <li>✓ Pulumi</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Security & Compliance -->
+      <h3 style="text-align: center; margin: 60px 0 40px;">Security & Compliance</h3>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Cloud Security Architecture</h3>
+          <p>Implementing secure cloud infrastructure with identity management, encryption, VPCs, and zero-trust security models.</p>
+          <ul class="service-list">
+            <li>✓ IAM & Access Control</li>
+            <li>✓ Encryption & Key Management</li>
+            <li>✓ Network Security</li>
+            <li>✓ DDoS Protection</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+            <i class="fas fa-certificate"></i>
+          </div>
+          <h3>Compliance & Governance</h3>
+          <p>Meeting regulatory requirements including ISO 27001, GDPR, HIPAA, SOC 2, and industry-specific compliance standards.</p>
+          <ul class="service-list">
+            <li>✓ ISO 27001</li>
+            <li>✓ GDPR & Privacy</li>
+            <li>✓ HIPAA Compliance</li>
+            <li>✓ SOC 2 & Audits</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #ff9566 0%, #ff6b6b 100%);">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>Monitoring & Logging</h3>
+          <p>Comprehensive observability using ELK Stack, Prometheus, CloudWatch, and Datadog for security monitoring.</p>
+          <ul class="service-list">
+            <li>✓ ELK Stack</li>
+            <li>✓ Prometheus & Grafana</li>
+            <li>✓ CloudWatch</li>
+            <li>✓ Log Aggregation</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Data & Analytics -->
+      <h3 style="text-align: center; margin: 60px 0 40px;">Data & Analytics</h3>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <i class="fas fa-database"></i>
+          </div>
+          <h3>Data Engineering</h3>
+          <p>Building scalable data pipelines and data warehouses using Apache Spark, Hadoop for enterprise analytics.</p>
+          <ul class="service-list">
+            <li>✓ Apache Spark</li>
+            <li>✓ Data Warehouses</li>
+            <li>✓ ETL Pipeline Architecture</li>
+            <li>✓ Data Lakes</li>
+          </ul>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <i class="fas fa-brain"></i>
+          </div>
+          <h3>AI/ML & Advanced Analytics</h3>
+          <p>Implementing machine learning solutions, predictive analytics, and AI models for business intelligence.</p>
+          <ul class="service-list">
+            <li>✓ Machine Learning</li>
+            <li>✓ TensorFlow & PyTorch</li>
+            <li>✓ Data Science</li>
+            <li>✓ Predictive Analytics</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Certifications -->
+      <div class="process-section" style="background: transparent; padding: 80px 0;">
+        <h2 style="text-align: center; margin-bottom: 50px;">Industry Certifications</h2>
+        <div class="process-steps">
+          <div class="step">
+            <i class="fas fa-certificate" style="font-size: 32px; color: var(--secondary-color); margin-bottom: 15px;"></i>
+            <h4>AWS Solutions Architect</h4>
+            <p>Professional Level</p>
+          </div>
+          <div class="step">
+            <i class="fas fa-certificate" style="font-size: 32px; color: var(--secondary-color); margin-bottom: 15px;"></i>
+            <h4>AWS DevOps Professional</h4>
+            <p>Advanced Expertise</p>
+          </div>
+          <div class="step">
+            <i class="fas fa-certificate" style="font-size: 32px; color: var(--secondary-color); margin-bottom: 15px;"></i>
+            <h4>Azure Architect Expert</h4>
+            <p>Expert Level</p>
+          </div>
+          <div class="step">
+            <i class="fas fa-certificate" style="font-size: 32px; color: var(--secondary-color); margin-bottom: 15px;"></i>
+            <h4>GCP Data Engineer</h4>
+            <p>Professional Level</p>
+          </div>
+          <div class="step">
+            <i class="fas fa-certificate" style="font-size: 32px; color: var(--secondary-color); margin-bottom: 15px;"></i>
+            <h4>Kubernetes Administrator</h4>
+            <p>CKA Certified</p>
+          </div>
+          <div class="step">
+            <i class="fas fa-certificate" style="font-size: 32px; color: var(--secondary-color); margin-bottom: 15px;"></i>
+            <h4>Terraform Associate</h4>
+            <p>HashiCorp Certified</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Leverage Our Expertise?</h2>
+      <p>Let our certified cloud professionals help you achieve your cloud transformation goals</p>
+      <button class="btn btn-primary" onclick="showConsultationModal()">Schedule Free Consultation</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Ambifo Technology Pvt Ltd</h4>
+        <p><i class="fas fa-map-marker-alt"></i> Building No 674, 18th Main, 3rd Phase, Front of New Land ISRO Quarter, Domlur, Bangalore - 560071</p>
+        <p><i class="fas fa-phone"></i> +91 9148419502</p>
+        <p><i class="fas fa-envelope"></i> support@ambifo.com</p>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/services">Services</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/cloud-migration">Cloud Migration</a></li>
+          <li><a href="/cloud-devops">DevOps & Automation</a></li>
+          <li><a href="/cloud-finops">FinOps</a></li>
+          <li><a href="/cloud-security">Security & Compliance</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Ambifo Technology Pvt Ltd. All rights reserved. | <a href="/privacy-policy">Privacy Policy</a> | <a href="/terms">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

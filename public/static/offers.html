@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offers - Ambifo Technology</title>
+  <link rel="icon" type="image/png" href="/images/ambifologo.png">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <a href="/" class="logo-link">
+          <img src="/images/ambifologo.png" alt="Ambifo Logo" class="logo">
+        </a>
+        <span class="brand-name">Ambifo</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="dropdown">
+          <a href="/services" class="nav-link">Consultancy</a>
+          <div class="dropdown-menu">
+            <a href="/cloud-migration" class="dropdown-item">Cloud Migration Services</a>
+            <a href="/cloud-devops" class="dropdown-item">Cloud DevOps & Automation</a>
+            <a href="/cloud-finops" class="dropdown-item">Cloud FinOps & Optimization</a>
+            <a href="/cloud-security" class="dropdown-item">Cloud Security & Compliance</a>
+            <a href="/managed-cloud" class="dropdown-item">Managed Cloud Services</a>
+            <a href="/ai-ml" class="dropdown-item">AI/ML & Modern Applications</a>
+          </div>
+        </li>
+        <li><a href="/expertise" class="nav-link">Expertise</a></li>
+        <li><a href="/offers" class="nav-link active">Offers</a></li>
+        <li><a href="/careers" class="nav-link">Careers</a></li>
+        <li class="dropdown">
+          <a href="javascript:void(0)" class="nav-link">Resources</a>
+          <div class="dropdown-menu">
+            <a href="/blog" class="dropdown-item">Blog</a>
+            <a href="/portfolio" class="dropdown-item">Case Studies</a>
+          </div>
+        </li>
+        <li><a href="/about" class="nav-link">About</a></li>
+        <li><a href="/contact" class="nav-link cta-btn">Contact Us</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div id="canvas-container" class="hero-canvas-3d"></div>
+    <div class="hero-content">
+      <h1>Special Offers & Deals</h1>
+      <p>Exclusive packages and promotional offers for cloud transformation</p>
+    </div>
+    <canvas id="ambifoCanvas" class="hero-canvas"></canvas>
+    <div class="hero-background"></div>
+  </section>
+
+  <!-- Offers Content -->
+  <section class="services-section">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 50px;">
+        <h2>Limited Time Offers</h2>
+        <p style="font-size: 16px; color: var(--light-text); max-width: 700px; margin: 20px auto;">Take advantage of our special packages and promotional rates designed for businesses of all sizes</p>
+      </div>
+
+      <!-- Pricing Cards -->
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3>Starter Package</h3>
+          <p style="font-weight: bold; color: var(--secondary-color);">$2,999/month</p>
+          <p style="color: var(--light-text); font-size: 14px; margin: 10px 0;">Save 20% for first 3 months - Code: START20</p>
+          <p>Perfect for small teams getting started with cloud transformation and basic optimization.</p>
+          <ul class="service-list">
+            <li>✓ Cloud Assessment & Strategy (40 hours)</li>
+            <li>✓ Architecture Design</li>
+            <li>✓ 1 Cloud Platform Setup</li>
+            <li>✓ Basic Security</li>
+            <li>✓ Monthly Reports</li>
+            <li>✓ Business Hours Support</li>
+          </ul>
+          <button class="btn btn-outline" onclick="showConsultationModal()">Get Started</button>
+        </div>
+
+        <div class="service-card" style="border: 2px solid var(--secondary-color); transform: scale(1.05);">
+          <div class="service-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Growth Package</h3>
+          <p style="font-weight: bold; color: var(--secondary-color);">$7,999/month</p>
+          <p style="color: var(--secondary-color); font-size: 14px; margin: 10px 0; font-weight: bold;">★ MOST POPULAR</p>
+          <p style="color: var(--light-text); font-size: 14px; margin: 10px 0;">Save 30% for first 6 months - Code: GROW30</p>
+          <p>Best for growing companies scaling their cloud infrastructure and DevOps practice.</p>
+          <ul class="service-list">
+            <li>✓ Full Cloud Assessment & Migration</li>
+            <li>✓ Multi-Cloud Architecture Design</li>
+            <li>✓ Cloud Migration (up to 100 servers)</li>
+            <li>✓ DevOps Pipeline Setup (CI/CD)</li>
+            <li>✓ Security & Compliance</li>
+            <li>✓ Kubernetes Implementation</li>
+            <li>✓ Weekly Reports</li>
+            <li>✓ 24/7 Priority Support</li>
+          </ul>
+          <button class="btn btn-primary" onclick="showConsultationModal()">Choose This Plan</button>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            <i class="fas fa-crown"></i>
+          </div>
+          <h3>Enterprise Package</h3>
+          <p style="font-weight: bold; color: var(--secondary-color);">Custom Pricing</p>
+          <p style="color: var(--light-text); font-size: 14px; margin: 10px 0;">Flexible pricing for large-scale deployments</p>
+          <p>Ideal for large organizations with complex multi-cloud and enterprise requirements.</p>
+          <ul class="service-list">
+            <li>✓ Unlimited Cloud Services</li>
+            <li>✓ Multi-Region Deployment</li>
+            <li>✓ Dedicated Cloud Team</li>
+            <li>✓ Custom Integrations</li>
+            <li>✓ FinOps & Optimization</li>
+            <li>✓ 24/7 Dedicated Support & SLA</li>
+            <li>✓ Custom Training</li>
+            <li>✓ Quarterly Reviews</li>
+          </ul>
+          <button class="btn btn-outline" onclick="showConsultationModal()">Contact Sales</button>
+        </div>
+      </div>
+
+      <!-- Special Promotions -->
+      <h2 style="text-align: center; margin: 80px 0 40px;">Special Promotions</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #FF6B6B 0%, #FF8E72 100%);">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h3>First-Time Migration Special</h3>
+          <p style="font-weight: bold; font-size: 18px; color: var(--secondary-color);">40% Discount</p>
+          <p>On first cloud migration project for new clients</p>
+          <p style="background: var(--light-bg); padding: 10px; border-radius: 8px; font-weight: bold; color: var(--primary-color); margin: 15px 0;">Code: MIGRATE40</p>
+          <p style="font-size: 13px; color: var(--light-text);">Valid until June 30, 2024</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #26C485 0%, #6FED4F 100%);">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <h3>Green Cloud Initiative</h3>
+          <p style="font-weight: bold; font-size: 18px; color: var(--secondary-color);">25% Discount</p>
+          <p>On sustainability-focused cloud optimization</p>
+          <p style="background: var(--light-bg); padding: 10px; border-radius: 8px; font-weight: bold; color: var(--primary-color); margin: 15px 0;">Code: GREEN25</p>
+          <p style="font-size: 13px; color: var(--light-text);">Valid until June 30, 2024</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3>Refer a Friend</h3>
+          <p style="font-weight: bold; font-size: 18px; color: var(--secondary-color);">$5,000 Credits</p>
+          <p>For every successful referral</p>
+          <p style="background: var(--light-bg); padding: 10px; border-radius: 8px; font-weight: bold; color: var(--primary-color); margin: 15px 0;">Share Your Code</p>
+          <p style="font-size: 13px; color: var(--light-text);">Ongoing program</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Security Compliance Bundle</h3>
+          <p style="font-weight: bold; font-size: 18px; color: var(--secondary-color);">35% Discount</p>
+          <p>On compliance implementation packages</p>
+          <p style="background: var(--light-bg); padding: 10px; border-radius: 8px; font-weight: bold; color: var(--primary-color); margin: 15px 0;">Code: SECURE35</p>
+          <p style="font-size: 13px; color: var(--light-text);">Valid until June 30, 2024</p>
+        </div>
+      </div>
+
+      <!-- Add-on Services -->
+      <h2 style="text-align: center; margin: 80px 0 40px;">Popular Add-on Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Cloud Cost Optimization</h3>
+          <p>Complete analysis and optimization of your cloud spending with detailed recommendations for cost reduction.</p>
+          <p style="font-weight: bold; color: var(--secondary-color); margin-top: 15px;">Starting at $1,500</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h3>Security Audit & Hardening</h3>
+          <p>Comprehensive security assessment and hardening implementation across your cloud infrastructure.</p>
+          <p style="font-weight: bold; color: var(--secondary-color); margin-top: 15px;">Starting at $3,000</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+            <i class="fas fa-sync"></i>
+          </div>
+          <h3>Disaster Recovery Setup</h3>
+          <p>Complete disaster recovery and business continuity planning for your critical workloads.</p>
+          <p style="font-weight: bold; color: var(--secondary-color); margin-top: 15px;">Starting at $2,500</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon" style="background: linear-gradient(135deg, #ff9566 0%, #ff6b6b 100%);">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3>Training & Certification</h3>
+          <p>Custom training programs designed to upskill your team on cloud technologies and best practices.</p>
+          <p style="font-weight: bold; color: var(--secondary-color); margin-top: 15px;">Starting at $1,000</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2>Ready to Transform Your Cloud? Claim Your Offer Today!</h2>
+      <p>Limited time offers available - Schedule a free consultation with our cloud experts</p>
+      <button class="btn btn-primary" onclick="showConsultationModal()">Claim Your Offer</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Ambifo Technology</h4>
+        <p>Enterprise cloud consulting and DevOps services for AWS, Azure, and GCP</p>
+      </div>
+      <div class="footer-section">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/services">Consultancy</a></li>
+          <li><a href="/expertise">Expertise</a></li>
+          <li><a href="/offers">Offers</a></li>
+          <li><a href="/careers">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/portfolio">Case Studies</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 Ambifo Technology. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
