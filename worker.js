@@ -13,8 +13,8 @@ export default {
       return Response.redirect(url.toString(), 301);
     }
 
-    if (url.hostname === 'www.ambifo.com') {
-      url.hostname = 'ambifo.com';
+    if (url.hostname.startsWith('www.')) {
+      url.hostname = url.hostname.replace(/^www\./, '');
       return Response.redirect(url.toString(), 301);
     }
 
