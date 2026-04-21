@@ -11,6 +11,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+app.get('/favicon.ico', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'images', 'ambifologo.png'));
+});
+
 // Routes
 app.get('/', (req, res) => {
   res.render('index');

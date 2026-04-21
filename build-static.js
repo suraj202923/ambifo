@@ -31,6 +31,18 @@ assetDirs.forEach(dir => {
   }
 });
 
+// Copy root SEO/static files used by crawlers.
+const rootFiles = ['robots.txt', 'sitemap.xml', 'llms.txt'];
+rootFiles.forEach(file => {
+  const srcPath = path.join(publicDir, file);
+  const destPath = path.join(outputDir, file);
+
+  if (fs.existsSync(srcPath)) {
+    fs.copyFileSync(srcPath, destPath);
+    console.log(`✓ Copied ${file}`);
+  }
+});
+
 // List of templates to build (excluding partials)
 const templates = [
   'index',

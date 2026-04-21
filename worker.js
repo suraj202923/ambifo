@@ -7,6 +7,30 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
+    // Enforce a single canonical host and HTTPS to avoid split indexing.
+    if (url.protocol !== 'https:') {
+      url.protocol = 'https:';
+      return Response.redirect(url.toString(), 301);
+    }
+
+    if (url.hostname === 'www.ambifo.com') {
+      url.hostname = 'ambifo.com';
+      return Response.redirect(url.toString(), 301);
+    }
+
+    // Provide a root favicon path for crawlers and browsers.
+    if (pathname === '/favicon.ico') {
+      const faviconResponse = await env.ASSETS.fetch(new Request(new URL('/images/ambifologo.png', url)));
+      if (faviconResponse.status === 200) {
+        const headers = new Headers(faviconResponse.headers);
+        headers.set('Cache-Control', 'public, max-age=31536000, immutable');
+        return new Response(faviconResponse.body, {
+          status: 200,
+          headers,
+        });
+      }
+    }
+
     // Handle consultation form submission
     if (pathname === '/api/consultation' && request.method === 'POST') {
       try {
@@ -134,7 +158,7 @@ export default {
     };
 
     // Get file extension for cache control
-    const ext = pathname.split('.').pop().toLowerCase();
+    const ext = assetPath.includes('.') ? assetPath.split('.').pop().toLowerCase() : '';
     const cacheControl = cacheHeaders[ext] || 'public, max-age=3600';
 
     // Serve static files (HTML, CSS, JS, images, etc.)
