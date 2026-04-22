@@ -166,6 +166,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       });
     });
+
+    // Ensure Consultancy always opens the services page.
+    document.querySelectorAll('.nav-link').forEach(link => {
+      if (link.textContent.trim() === 'Consultancy') {
+        link.setAttribute('href', '/services');
+        link.addEventListener('click', function() {
+          window.location.href = '/services';
+        });
+      }
+    });
   }
 
   // Dropdown menu handler for mobile/touch
