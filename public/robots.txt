@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
 Sitemap: https://ambifo.com/sitemap.xml

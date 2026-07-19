@@ -1,20 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://ambifo.com/</loc></url>
-  <url><loc>https://ambifo.com/about</loc></url>
-  <url><loc>https://ambifo.com/services</loc></url>
-  <url><loc>https://ambifo.com/expertise</loc></url>
-  <url><loc>https://ambifo.com/offers</loc></url>
-  <url><loc>https://ambifo.com/careers</loc></url>
-  <url><loc>https://ambifo.com/portfolio</loc></url>
-  <url><loc>https://ambifo.com/blog</loc></url>
-  <url><loc>https://ambifo.com/contact</loc></url>
-  <url><loc>https://ambifo.com/privacy-policy</loc></url>
-  <url><loc>https://ambifo.com/terms</loc></url>
-  <url><loc>https://ambifo.com/cloud-migration</loc></url>
-  <url><loc>https://ambifo.com/cloud-devops</loc></url>
-  <url><loc>https://ambifo.com/cloud-security</loc></url>
-  <url><loc>https://ambifo.com/cloud-finops</loc></url>
-  <url><loc>https://ambifo.com/managed-cloud</loc></url>
-  <url><loc>https://ambifo.com/ai-ml</loc></url>
+  <url><loc>https://ambifo.com/</loc><priority>1.0</priority></url>
+
+  <!-- Services -->
+  <url><loc>https://ambifo.com/services/strategy-and-advisory</loc><priority>0.8</priority></url>
+  <url><loc>https://ambifo.com/services/ai-data-analytics</loc><priority>0.8</priority></url>
+  <url><loc>https://ambifo.com/services/app-modernization</loc><priority>0.8</priority></url>
+  <url><loc>https://ambifo.com/services/cloud-infrastructure</loc><priority>0.8</priority></url>
+  <url><loc>https://ambifo.com/services/generative-ai</loc><priority>0.8</priority></url>
+
+  <!-- Sub-services -->
+  <url><loc>https://ambifo.com/services/strategy-and-advisory/digital-maturity-assessment</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/strategy-and-advisory/ai-readiness-assessment</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/strategy-and-advisory/cloud-advisory-services</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/strategy-and-advisory/well-architected-framework-review</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/strategy-and-advisory/dev-secops-maturity-assessments</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/strategy-and-advisory/modernization-assessment</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/ai-data-analytics/intelligent-data-application</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/ai-data-analytics/data-management-and-engineering</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/ai-data-analytics/data-lakehouse</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/ai-data-analytics/database-modernisation</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/ai-data-analytics/ml-ops</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/app-modernization/legacy-modernization</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/app-modernization/devsecops</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/app-modernization/microsoft-workloads-modernization</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/cloud-infrastructure-security/cloud-migration</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/cloud-infrastructure-security/disaster-recovery</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/cloud-infrastructure-security/managed-services</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/cloud-infrastructure-security/azure-expert-msp</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/cloud-infrastructure-security/cloud-finops</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/services/cloud-infrastructure-security/sap-cloud-solutions</loc><priority>0.6</priority></url>
+
+  <!-- Platforms -->
+  <url><loc>https://ambifo.com/platforms/vista</loc><priority>0.7</priority></url>
+  <url><loc>https://ambifo.com/platforms/media-intelligence-platform</loc><priority>0.7</priority></url>
+  <url><loc>https://ambifo.com/platforms/max-ai-studio</loc><priority>0.7</priority></url>
+
+  <!-- Solutions -->
+  <url><loc>https://ambifo.com/solutions/cloud-solution-factory</loc><priority>0.7</priority></url>
+  <url><loc>https://ambifo.com/solutions/ai-solution-factory</loc><priority>0.7</priority></url>
+  <url><loc>https://ambifo.com/solutions/gen-ai-solution-factory</loc><priority>0.7</priority></url>
+  <url><loc>https://ambifo.com/solutions/swayam</loc><priority>0.7</priority></url>
+
+  <!-- Industries -->
+  <url><loc>https://ambifo.com/industries</loc><priority>0.7</priority></url>
+  <url><loc>https://ambifo.com/industries/aerospace-satellite</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/industries/public-sector</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/industries/manufacturing</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/industries/logistics</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/industries/bfsi</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/industries/healthcare-lifesciences</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/industries/power-utilities</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/industries/telco-towers</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/industries/education</loc><priority>0.6</priority></url>
+
+  <!-- Insights -->
+  <url><loc>https://ambifo.com/insights-resources/media</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/insights-resources/case-study</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/insights-resources/blog-posts</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/insights-resources/events-webinars</loc><priority>0.6</priority></url>
+
+  <!-- Company -->
+  <url><loc>https://ambifo.com/company/about-us</loc><priority>0.7</priority></url>
+  <url><loc>https://ambifo.com/company/leadership</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/company/partners</loc><priority>0.6</priority></url>
+  <url><loc>https://ambifo.com/careers</loc><priority>0.7</priority></url>
+  <url><loc>https://ambifo.com/contact-us</loc><priority>0.8</priority></url>
+
+  <!-- Legal -->
+  <url><loc>https://ambifo.com/privacy-policy</loc><priority>0.3</priority></url>
+  <url><loc>https://ambifo.com/terms</loc><priority>0.3</priority></url>
+  <url><loc>https://ambifo.com/csr-policy</loc><priority>0.3</priority></url>
 </urlset>
