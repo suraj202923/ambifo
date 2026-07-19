@@ -53,6 +53,31 @@ const SAPCloudSolutions = lazy(() => import('./pages/services/cloud-infra/SAPClo
 const Entisense = lazy(() => import('./pages/platforms/Entisense'))
 const FastDataBroker = lazy(() => import('./pages/platforms/FastDataBroker'))
 const Swayam = lazy(() => import('./pages/solutions/Swayam'))
+const AWSCloudModernization = lazy(() => import('./pages/solutions/AWSCloudModernization'))
+const ManagedServicesAWS = lazy(() => import('./pages/solutions/ManagedServicesAWS'))
+const CloudMigrationSolutions = lazy(() => import('./pages/solutions/CloudMigrationSolutions'))
+// AWS Modernization sub-pages
+const AppModSolutions = lazy(() => import('./pages/solutions/aws-modernization/ApplicationModernization'))
+const DbModSolutions = lazy(() => import('./pages/solutions/aws-modernization/DatabaseModernization'))
+const ContainerK8sSolutions = lazy(() => import('./pages/solutions/aws-modernization/ContainerizationKubernetes'))
+const ServerlessSolutions = lazy(() => import('./pages/solutions/aws-modernization/ServerlessModernization'))
+const LegacyModSolutions = lazy(() => import('./pages/solutions/aws-modernization/LegacySystemModernization'))
+const DevOpsCICDSolutions = lazy(() => import('./pages/solutions/aws-modernization/DevOpsCICD'))
+const DataAnalyticsModSolutions = lazy(() => import('./pages/solutions/aws-modernization/DataAnalyticsModernization'))
+// Managed Services sub-pages
+const MonitoringIncidentMgmt = lazy(() => import('./pages/solutions/managed-services/MonitoringIncidentManagement'))
+const CostOptimizationFinOps = lazy(() => import('./pages/solutions/managed-services/CostOptimizationFinOps'))
+const SecurityGovCompliance = lazy(() => import('./pages/solutions/managed-services/SecurityGovernanceCompliance'))
+const BackupDRBCP = lazy(() => import('./pages/solutions/managed-services/BackupDRBusinessContinuity'))
+const DevOpsInfraAutomation = lazy(() => import('./pages/solutions/managed-services/DevOpsInfrastructureAutomation'))
+// Cloud Migration sub-pages
+const MigrationStrategyAssess = lazy(() => import('./pages/solutions/cloud-migration/MigrationStrategyAssessment'))
+const LandingZoneDeploy = lazy(() => import('./pages/solutions/cloud-migration/HardenedLandingZone'))
+const DataMigrationMod = lazy(() => import('./pages/solutions/cloud-migration/DataMigrationModernization'))
+const AppMigrationOpt = lazy(() => import('./pages/solutions/cloud-migration/ApplicationMigrationOptimization'))
+const SecurityComplianceGov = lazy(() => import('./pages/solutions/cloud-migration/SecurityComplianceGovernance'))
+const DRAsAService = lazy(() => import('./pages/solutions/cloud-migration/DisasterRecoveryService'))
+const LegacyChallengeSolutions = lazy(() => import('./pages/solutions/cloud-migration/LegacyChallenges'))
 
 function LoadingSpinner() {
   return (
@@ -102,6 +127,31 @@ export default function App() {
             <Route path="/platforms/fastdatabroker" element={<FastDataBroker />} />
             <Route path="/solutions/gen-ai-solution-factory" element={<GenAISolutionFactory />} />
             <Route path="/solutions/swayam" element={<Swayam />} />
+            <Route path="/solutions/aws-cloud-modernization" element={<AWSCloudModernization />} />
+            <Route path="/solutions/managed-services-aws" element={<ManagedServicesAWS />} />
+            <Route path="/solutions/cloud-migration-solutions" element={<CloudMigrationSolutions />} />
+            {/* AWS Modernization sub-routes */}
+            <Route path="/solutions/aws-modernization/application-modernization" element={<AppModSolutions />} />
+            <Route path="/solutions/aws-modernization/database-modernization" element={<DbModSolutions />} />
+            <Route path="/solutions/aws-modernization/containerization-kubernetes" element={<ContainerK8sSolutions />} />
+            <Route path="/solutions/aws-modernization/serverless-modernization" element={<ServerlessSolutions />} />
+            <Route path="/solutions/aws-modernization/legacy-system-modernization" element={<LegacyModSolutions />} />
+            <Route path="/solutions/aws-modernization/devops-cicd" element={<DevOpsCICDSolutions />} />
+            <Route path="/solutions/aws-modernization/data-analytics-modernization" element={<DataAnalyticsModSolutions />} />
+            {/* Managed Services sub-routes */}
+            <Route path="/solutions/managed-services/monitoring-incident-management" element={<MonitoringIncidentMgmt />} />
+            <Route path="/solutions/managed-services/cost-optimization-finops" element={<CostOptimizationFinOps />} />
+            <Route path="/solutions/managed-services/security-governance-compliance" element={<SecurityGovCompliance />} />
+            <Route path="/solutions/managed-services/backup-dr-business-continuity" element={<BackupDRBCP />} />
+            <Route path="/solutions/managed-services/devops-infrastructure-automation" element={<DevOpsInfraAutomation />} />
+            {/* Cloud Migration sub-routes */}
+            <Route path="/solutions/cloud-migration/migration-strategy-assessment" element={<MigrationStrategyAssess />} />
+            <Route path="/solutions/cloud-migration/hardened-landing-zone" element={<LandingZoneDeploy />} />
+            <Route path="/solutions/cloud-migration/data-migration-modernization" element={<DataMigrationMod />} />
+            <Route path="/solutions/cloud-migration/application-migration-optimization" element={<AppMigrationOpt />} />
+            <Route path="/solutions/cloud-migration/security-compliance-governance" element={<SecurityComplianceGov />} />
+            <Route path="/solutions/cloud-migration/disaster-recovery-service" element={<DRAsAService />} />
+            <Route path="/solutions/cloud-migration/legacy-challenges" element={<LegacyChallengeSolutions />} />
             <Route path="/industries" element={<Industries />} />
             <Route path="/industries/:industry" element={<IndustryDetail />} />
             <Route path="/insights-resources/media" element={<Media />} />

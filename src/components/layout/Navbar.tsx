@@ -18,13 +18,13 @@ function isExternal(href: string) {
 function NavLink({ to, label, onClick }: { to: string; label: string; onClick?: () => void }) {
   if (isExternal(to)) {
     return (
-      <a href={to} target="_blank" rel="noopener noreferrer" className="block text-gray-300 hover:text-cyan-300 text-sm transition-colors py-1" onClick={onClick}>
+      <a href={to} target="_blank" rel="noopener noreferrer" className="block text-gray-300 hover:text-green-400 text-sm transition-colors py-1" onClick={onClick}>
         {label}
       </a>
     )
   }
   return (
-    <Link to={to} className="block text-gray-300 hover:text-cyan-300 text-sm transition-colors py-1" onClick={onClick}>
+    <Link to={to} className="block text-gray-300 hover:text-green-400 text-sm transition-colors py-1" onClick={onClick}>
       {label}
     </Link>
   )
@@ -64,7 +64,7 @@ function DesktopMegaMenu({ data, onItemClick }: { data: typeof servicesSubmenu; 
               <div key={col.heading}>
                 <Link
                   to={col.link}
-                  className="block text-cyan-400 font-semibold text-sm hover:text-cyan-300 transition-colors mb-3"
+                  className="block text-cyan-400 font-semibold text-sm hover:text-green-400 transition-colors mb-3"
                   onClick={onItemClick}
                 >
                   {col.heading}
@@ -119,7 +119,7 @@ function MobileSubmenu({ data }: { data: (typeof navItems)[number]['data'] }) {
           <div key={col.heading}>
             <Link
               to={col.link}
-              className="block text-yellow-400 font-semibold text-sm mb-2 px-3 py-1"
+              className="block text-green-400 font-semibold text-sm mb-2 px-3 py-1"
             >
               {col.heading}
             </Link>
@@ -203,7 +203,7 @@ export default function Navbar() {
 
           <Link
             to="/contact-us"
-            className="hidden lg:inline-flex items-center px-5 py-2.5 bg-yellow-400 text-navy-900 font-semibold text-sm rounded-lg hover:bg-yellow-500 transition-colors whitespace-nowrap"
+            className="hidden lg:inline-flex items-center px-5 py-2.5 bg-green-500 text-navy-900 font-semibold text-sm rounded-lg hover:bg-green-600 transition-colors whitespace-nowrap"
           >
             Contact
           </Link>
@@ -233,7 +233,7 @@ export default function Navbar() {
                   <div key={item.label}>
                     <button
                       onClick={() => toggleMobileItem(item.label)}
-                      className="flex items-center justify-between w-full px-3 py-3 text-gray-200 hover:text-yellow-400 font-medium rounded-lg hover:bg-navy-800/50 transition-colors"
+                      className="flex items-center justify-between w-full px-3 py-3 text-gray-200 hover:text-green-400 font-medium rounded-lg hover:bg-navy-800/50 transition-colors"
                     >
                       {item.label}
                       <ChevronDown
@@ -261,7 +261,7 @@ export default function Navbar() {
               <Link
                 to="/contact-us"
                 onClick={closeMobile}
-                className="block text-center px-5 py-3 bg-yellow-400 text-navy-900 font-semibold rounded-lg mt-4 hover:bg-yellow-500 transition-colors"
+                className="block text-center px-5 py-3 bg-green-500 text-navy-900 font-semibold rounded-lg mt-4 hover:bg-green-600 transition-colors"
               >
                 Contact
               </Link>

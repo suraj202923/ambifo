@@ -73,6 +73,43 @@ export const solutionsSubmenu = {
         { label: 'Automated Patient Discharge Reports', link: '/solutions/gen-ai-solution-factory#Automated-Patient-Dis' },
       ],
     },
+    {
+      heading: 'AWS Cloud Modernization',
+      link: '/solutions/aws-cloud-modernization',
+      items: [
+        { label: 'Application Modernization', link: '/solutions/aws-modernization/application-modernization' },
+        { label: 'Database Modernization', link: '/solutions/aws-modernization/database-modernization' },
+        { label: 'Containerization & Kubernetes', link: '/solutions/aws-modernization/containerization-kubernetes' },
+        { label: 'Serverless Modernization', link: '/solutions/aws-modernization/serverless-modernization' },
+        { label: 'Legacy System Modernization', link: '/solutions/aws-modernization/legacy-system-modernization' },
+        { label: 'DevOps & CI/CD', link: '/solutions/aws-modernization/devops-cicd' },
+        { label: 'Data & Analytics Modernization', link: '/solutions/aws-modernization/data-analytics-modernization' },
+      ],
+    },
+    {
+      heading: 'Managed Services – AWS',
+      link: '/solutions/managed-services-aws',
+      items: [
+        { label: '24x7 Monitoring & Incident Management', link: '/solutions/managed-services/monitoring-incident-management' },
+        { label: 'Cloud Cost Optimization & FinOps', link: '/solutions/managed-services/cost-optimization-finops' },
+        { label: 'Security, Governance & Compliance', link: '/solutions/managed-services/security-governance-compliance' },
+        { label: 'Backup, DR & Business Continuity', link: '/solutions/managed-services/backup-dr-business-continuity' },
+        { label: 'DevOps & Infrastructure Automation', link: '/solutions/managed-services/devops-infrastructure-automation' },
+      ],
+    },
+    {
+      heading: 'Cloud Migration Solutions',
+      link: '/solutions/cloud-migration-solutions',
+      items: [
+        { label: 'Migration Strategy & Assessment', link: '/solutions/cloud-migration/migration-strategy-assessment' },
+        { label: 'Hardened Landing Zone', link: '/solutions/cloud-migration/hardened-landing-zone' },
+        { label: 'Data Migration & Modernization', link: '/solutions/cloud-migration/data-migration-modernization' },
+        { label: 'Application Migration & Optimization', link: '/solutions/cloud-migration/application-migration-optimization' },
+        { label: 'Security, Compliance & Governance', link: '/solutions/cloud-migration/security-compliance-governance' },
+        { label: 'Disaster Recovery as a Service', link: '/solutions/cloud-migration/disaster-recovery-service' },
+        { label: 'Legacy Challenges', link: '/solutions/cloud-migration/legacy-challenges' },
+      ],
+    },
   ],
 }
 

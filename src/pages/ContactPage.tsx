@@ -15,7 +15,6 @@ const offices = [
     address: 'Building No 674, 18th Main, 3rd Phase, Front of New Land ISRO Quarter, Domlur, Bangalore - 560071',
     phone: ['+91 7776809021', '+91 9827135213'],
     email: 'support@ambifo.com',
-    hours: 'Mon - Fri, 9:00 AM - 6:00 PM IST',
     flag: '\uD83C\uDDEE\uD83C\uDDF3',
     timezone: 'IST (UTC+5:30)',
     color: 'from-blue-500 to-indigo-600',
@@ -25,10 +24,45 @@ const offices = [
     address: 'G/1, Mahalaxmi Residency, Narsala, Nagpur, 440034, Maharashtra',
     phone: ['+91 7776809021', '+91 9827135213'],
     email: 'support@ambifo.com',
-    hours: 'Mon - Fri, 9:00 AM - 6:00 PM IST',
     flag: '\uD83C\uDDEE\uD83C\uDDF3',
     timezone: 'IST (UTC+5:30)',
     color: 'from-teal-500 to-emerald-600',
+  },
+  {
+    city: 'San Francisco, USA',
+    address: 'Ambifo Technology, 44 Montgomery St, Suite 300, San Francisco, CA 94104, United States of America',
+    phone: ['+91 7776809021', '+91 9827135213'],
+    email: 'support@ambifo.com',
+    flag: '\uD83C\uDDFA\uD83C\uDDF8',
+    timezone: 'PST (UTC-8)',
+    color: 'from-indigo-500 to-purple-600',
+  },
+  {
+    city: 'Melbourne, Australia',
+    address: 'Ambifo Technology Pty Ltd, Level 12, 727 Collins Street, Melbourne VIC 3008, Australia',
+    phone: ['+91 7776809021', '+91 9827135213'],
+    email: 'support@ambifo.com',
+    flag: '\uD83C\uDDE6\uD83C\uDDFA',
+    timezone: 'AEST (UTC+10)',
+    color: 'from-amber-500 to-orange-600',
+  },
+  {
+    city: 'Dubai, UAE',
+    address: 'Ambifo Technology, Level 28, Boulevard Plaza Tower 1, Sheikh Mohammed bin Rashid Boulevard, Downtown Dubai, P.O. Box 123456, Dubai, United Arab Emirates',
+    phone: ['+91 7776809021', '+91 9827135213'],
+    email: 'support@ambifo.com',
+    flag: '\uD83C\uDDE6\uD83C\uDDEA',
+    timezone: 'GST (UTC+4)',
+    color: 'from-pink-500 to-rose-600',
+  },
+  {
+    city: 'Singapore',
+    address: 'Ambifo Technology Pte. Ltd., 12 Marina Boulevard, #24-01 Marina Bay Financial Centre Tower 3, Singapore 018982',
+    phone: ['+91 7776809021', '+91 9827135213'],
+    email: 'support@ambifo.com',
+    flag: '\uD83C\uDDF8\uD83C\uDDEC',
+    timezone: 'SGT (UTC+8)',
+    color: 'from-cyan-500 to-blue-600',
   },
 ]
 
@@ -171,7 +205,6 @@ export default function ContactPage() {
             <span className="flex items-center gap-2"><Phone className="w-4 h-4 text-cyan-400" /> +91 7776809021</span>
             <span className="flex items-center gap-2"><Phone className="w-4 h-4 text-cyan-400" /> +91 9827135213</span>
             <span className="flex items-center gap-2"><Mail className="w-4 h-4 text-cyan-400" /> support@ambifo.com</span>
-            <span className="flex items-center gap-2"><Clock className="w-4 h-4 text-cyan-400" /> Mon-Fri, 9AM-6PM IST</span>
           </motion.div>
         </div>
       </section>
@@ -359,7 +392,7 @@ export default function ContactPage() {
                           <button
                             type="button"
                             onClick={() => setFormStep(formStep + 1)}
-                            className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-navy-900 text-white font-semibold text-sm rounded-xl hover:bg-blue-600 transition-all font-montserrat shadow-md hover:shadow-lg hover:-translate-y-0.5"
+                            className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 bg-navy-900 text-white font-semibold text-sm rounded-xl hover:bg-green-500 hover:text-navy-900 transition-all font-montserrat shadow-md hover:shadow-lg hover:-translate-y-0.5"
                           >
                             Continue <ArrowRight className="w-4 h-4" />
                           </button>
@@ -376,58 +409,72 @@ export default function ContactPage() {
               </div>
             </motion.div>
 
-            {/* Offices — 2 cols */}
+            {/* Offices */}
             <div className="lg:col-span-2 space-y-6">
-              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
-                <h2 className="text-2xl font-bold text-navy-900 font-montserrat mb-6">Our Offices</h2>
+              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="text-center lg:text-left">
+                <span className="text-sm font-semibold tracking-widest text-green-500 uppercase font-montserrat">Global Presence</span>
+                <h2 className="text-3xl font-bold text-navy-900 font-montserrat mt-2 mb-2">Our Offices</h2>
+                <p className="text-gray-500 text-sm">Serving clients worldwide from 6 strategic locations.</p>
               </motion.div>
 
-              {offices.map((office, i) => (
-                <motion.div
-                  key={office.city}
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 + i * 0.15 }}
-                  className="bg-white rounded-2xl p-6 border border-gray-100 shadow-lg shadow-gray-100/50 hover:shadow-xl transition-all duration-500 relative overflow-hidden group"
-                >
-                  <div className={`absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b ${office.color}`} />
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-blue-500/5 to-transparent rounded-bl-[60px] group-hover:from-blue-500/10 transition-colors" />
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${office.color} flex items-center justify-center`}>
-                      <Building2 className="w-5 h-5 text-white" />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {offices.map((office, i) => (
+                  <motion.div
+                    key={office.city}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
+                    className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 relative overflow-hidden"
+                  >
+                    <div className={`absolute top-0 left-0 w-full h-1 bg-gradient-to-r ${office.color}`} />
+                    <div className={`absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl ${office.color} opacity-5 group-hover:opacity-10 rounded-bl-full transition-opacity duration-500`} />
+                    <div className="p-5 relative z-10">
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex items-center gap-3">
+                          <div className={`w-11 h-11 rounded-xl bg-gradient-to-br ${office.color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                            <Building2 className="w-5 h-5 text-white" />
+                          </div>
+                          <div>
+                            <h3 className="text-base font-bold text-navy-900 font-montserrat flex items-center gap-2">
+                              <span className="text-lg">{office.flag}</span> {office.city}
+                              {office.city.includes('HQ') && (
+                                <span className="px-2 py-0.5 bg-green-500 text-navy-900 text-[10px] font-bold rounded-full uppercase tracking-wider">HQ</span>
+                              )}
+                            </h3>
+                            <span className="text-xs text-gray-400 flex items-center gap-1"><Wifi className="w-3 h-3" /> {office.timezone}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="space-y-2 text-gray-600 text-sm">
+                        <p className="flex items-start gap-2.5"><MapPin className="w-3.5 h-3.5 text-green-500 shrink-0 mt-0.5" /> <span className="leading-relaxed">{office.address}</span></p>
+                        {office.phone.map((p) => (
+                          <p key={p} className="flex items-center gap-2.5"><Phone className="w-3.5 h-3.5 text-green-500 shrink-0" /> {p}</p>
+                        ))}
+                        <p className="flex items-center gap-2.5"><Mail className="w-3.5 h-3.5 text-green-500 shrink-0" /> {office.email}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-navy-900 font-montserrat">{office.flag} {office.city}</h3>
-                      <span className="text-xs text-gray-400 flex items-center gap-1"><Wifi className="w-3 h-3" /> {office.timezone}</span>
-                    </div>
-                  </div>
-                  <div className="space-y-2.5 text-gray-600 text-sm ml-[52px]">
-                    <p className="flex items-start gap-2.5"><MapPin className="w-3.5 h-3.5 text-blue-400 shrink-0 mt-0.5" /> <span className="leading-relaxed">{office.address}</span></p>
-                    {office.phone.map((p) => (
-                      <p key={p} className="flex items-center gap-2.5"><Phone className="w-3.5 h-3.5 text-blue-400 shrink-0" /> {p}</p>
-                    ))}
-                    <p className="flex items-center gap-2.5"><Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" /> {office.email}</p>
-                    <p className="flex items-center gap-2.5"><Clock className="w-3.5 h-3.5 text-blue-400 shrink-0" /> {office.hours}</p>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                ))}
+              </div>
 
               {/* Need Help Card */}
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }} className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-2xl p-6 text-white relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }} className="bg-gradient-to-br from-navy-900 to-navy-800 rounded-2xl p-6 text-white relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-green-500/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-32 h-32 bg-green-500/5 rounded-full translate-y-1/2 -translate-x-1/2" />
                 <div className="relative z-10">
                   <div className="flex items-center gap-2 mb-3">
-                    <Headphones className="w-5 h-5 text-cyan-300" />
+                    <div className="w-9 h-9 rounded-lg bg-green-500/20 flex items-center justify-center">
+                      <Headphones className="w-5 h-5 text-green-400" />
+                    </div>
                     <h4 className="font-bold font-montserrat">Need Immediate Help?</h4>
                   </div>
-                  <p className="text-blue-100 text-sm mb-4 leading-relaxed">Call us directly or schedule a free 30-minute consultation with one of our cloud experts.</p>
+                  <p className="text-gray-400 text-sm mb-4 leading-relaxed">Call us directly or schedule a free 30-minute consultation with one of our cloud experts.</p>
                   <div className="flex flex-wrap gap-2">
-                    <a href="tel:+917776809021" className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm px-4 py-2 rounded-xl text-xs font-semibold transition-all border border-white/10 hover:-translate-y-0.5">
+                    <a href="tel:+917776809021" className="inline-flex items-center gap-2 bg-green-500/15 hover:bg-green-500/25 backdrop-blur-sm px-4 py-2 rounded-xl text-xs font-semibold transition-all border border-green-500/20 hover:-translate-y-0.5 text-green-400">
                       <Phone className="w-3.5 h-3.5" /> 7776809021
                     </a>
-                    <a href="tel:+919827135213" className="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm px-4 py-2 rounded-xl text-xs font-semibold transition-all border border-white/10 hover:-translate-y-0.5">
+                    <a href="tel:+919827135213" className="inline-flex items-center gap-2 bg-green-500/15 hover:bg-green-500/25 backdrop-blur-sm px-4 py-2 rounded-xl text-xs font-semibold transition-all border border-green-500/20 hover:-translate-y-0.5 text-green-400">
                       <Phone className="w-3.5 h-3.5" /> 9827135213
                     </a>
                   </div>

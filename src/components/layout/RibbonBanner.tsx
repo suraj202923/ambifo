@@ -14,7 +14,7 @@ export default function RibbonBanner({ visible, onClose }: RibbonBannerProps) {
           initial={{ height: 0, opacity: 0 }}
           animate={{ height: 'auto', opacity: 1 }}
           exit={{ height: 0, opacity: 0 }}
-          className="bg-yellow-400 text-navy-900 text-sm overflow-hidden"
+          className="bg-green-500 text-navy-900 text-sm overflow-hidden"
         >
           <div className="max-w-[1440px] mx-auto px-4 py-2.5 flex items-center justify-center relative">
             <span className="font-medium text-center text-xs md:text-sm">

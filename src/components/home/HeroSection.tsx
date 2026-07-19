@@ -86,7 +86,7 @@ export default function HeroSection() {
         >
           <Link
             to="/services/strategy-and-advisory"
-            className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 font-montserrat mx-auto"
+            className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-navy-900 font-semibold px-8 py-3 rounded-lg transition-colors duration-300 font-montserrat mx-auto"
           >
             Discover
             <ArrowRight className="w-5 h-5" />

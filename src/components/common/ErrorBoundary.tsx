@@ -28,7 +28,7 @@ export default class ErrorBoundary extends Component<Props, State> {
             <p className="text-gray-500 mb-8">An unexpected error occurred. Please try again.</p>
             <Link
               to="/"
-              className="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors font-montserrat"
+              className="inline-flex items-center gap-2 bg-green-500 text-navy-900 font-semibold px-6 py-3 rounded-lg hover:bg-green-600 transition-colors font-montserrat"
               onClick={() => this.setState({ hasError: false })}
             >
               Back to Home

@@ -180,7 +180,7 @@ export default function NotFound() {
             />
             <button
               type="submit"
-              className="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2.5 bg-blue-600 text-white text-sm font-semibold rounded-xl hover:bg-blue-700 transition-colors font-montserrat"
+              className="absolute right-2 top-1/2 -translate-y-1/2 px-5 py-2.5 bg-green-500 text-navy-900 text-sm font-semibold rounded-xl hover:bg-green-600 transition-colors font-montserrat"
             >
               Search
             </button>
@@ -196,7 +196,7 @@ export default function NotFound() {
         >
           <Link
             to="/"
-            className="inline-flex items-center gap-2 bg-blue-600 text-white font-semibold px-8 py-3.5 rounded-xl hover:bg-blue-700 transition-all duration-300 font-montserrat shadow-lg shadow-blue-600/20 hover:shadow-blue-600/30 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 bg-green-500 text-navy-900 font-semibold px-8 py-3.5 rounded-xl hover:bg-green-600 transition-all duration-300 font-montserrat shadow-lg shadow-green-500/20 hover:shadow-green-500/30 hover:-translate-y-0.5"
           >
             <Home className="w-5 h-5" />
             Back to Home

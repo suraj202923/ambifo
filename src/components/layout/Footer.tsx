@@ -112,7 +112,7 @@ export default function Footer() {
                     className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 text-sm outline-none focus:border-yellow-400/50 focus:bg-white/10 transition-all"
                   />
                 </div>
-                <button type="submit" className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-yellow-400 text-navy-900 font-semibold text-sm rounded-xl hover:bg-yellow-500 transition-all font-montserrat hover:shadow-lg hover:shadow-yellow-400/20">
+                <button type="submit" className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-green-500 text-navy-900 font-semibold text-sm rounded-xl hover:bg-green-600 transition-all font-montserrat hover:shadow-lg hover:shadow-green-500/20">
                   Subscribe <Send className="w-4 h-4" />
                 </button>
               </form>
@@ -227,7 +227,7 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-6">
           <Link
             to="/contact-us"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 text-navy-900 font-semibold text-sm rounded-xl hover:bg-yellow-500 transition-all font-montserrat hover:shadow-lg hover:shadow-yellow-400/20 hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-navy-900 font-semibold text-sm rounded-xl hover:bg-green-600 transition-all font-montserrat hover:shadow-lg hover:shadow-green-500/20 hover:-translate-y-0.5"
           >
             Get in Touch <ArrowRight className="w-4 h-4" />
           </Link>

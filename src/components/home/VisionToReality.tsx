@@ -109,7 +109,7 @@ export default function VisionToReality() {
         <div className="text-center">
           <a
             href="/insights-resources/case-study"
-            className="inline-flex items-center gap-2 border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-300 font-montserrat"
+            className="inline-flex items-center gap-2 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-navy-900 font-semibold px-8 py-3 rounded-lg transition-colors duration-300 font-montserrat"
           >
             View More
             <ArrowRight className="w-5 h-5" />

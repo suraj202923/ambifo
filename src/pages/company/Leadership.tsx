@@ -8,6 +8,7 @@ const leaders = [
     name: 'Suraj K',
     role: 'Solution Architect',
     initials: 'SK',
+    image: '/images/team/suraj k.jpeg',
     desc: 'Designs scalable, secure cloud architectures tailored to enterprise needs. Transforms complex business requirements into robust technical solutions across AWS, Azure, and GCP.',
     expertise: ['Cloud Architecture', 'AWS', 'Azure', 'System Design', 'Migration Strategy'],
     experience: '12+ Years',
@@ -23,7 +24,7 @@ const leaders = [
     projects: '150+',
   },
   {
-    name: 'Shiwani K',
+    name: 'Shivani K',
     role: 'Business Analyst',
     initials: 'SK',
     desc: 'Bridges the gap between business needs and technical solutions. Analyzes requirements, identifies opportunities, and ensures every project delivers measurable business value.',
@@ -79,10 +80,16 @@ export default function Leadership() {
                   {/* Avatar */}
                   <div className="w-full md:w-72 shrink-0">
                     <div className="aspect-square bg-gradient-to-br from-navy-900 via-navy-800 to-navy-700 rounded-2xl flex items-center justify-center relative overflow-hidden group-hover:shadow-2xl transition-all duration-500">
-                      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                      <span className="relative text-6xl md:text-7xl font-bold text-white font-montserrat group-hover:scale-110 transition-transform duration-500">
-                        {person.initials}
-                      </span>
+                      {person.image ? (
+                        <img src={person.image} alt={person.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                      ) : (
+                        <>
+                          <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                          <span className="relative text-6xl md:text-7xl font-bold text-white font-montserrat group-hover:scale-110 transition-transform duration-500">
+                            {person.initials}
+                          </span>
+                        </>
+                      )}
                     </div>
                   </div>
 

@@ -11,9 +11,9 @@ interface ButtonProps {
 }
 
 const variants = {
-  primary: 'bg-blue-600 hover:bg-blue-700 text-white',
+  primary: 'bg-green-500 hover:bg-green-600 text-navy-900',
   secondary: 'bg-yellow-400 hover:bg-yellow-500 text-navy-900',
-  outline: 'border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white',
+  outline: 'border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-navy-900',
 }
 
 export default function Button({ variant = 'primary', children, href, onClick, className = '', type = 'button' }: ButtonProps) {

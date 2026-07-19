@@ -96,6 +96,9 @@ export default function CaseStudies() {
                 <h2 className="text-2xl md:text-3xl font-bold text-white font-montserrat mb-4 group-hover:text-yellow-400 transition-colors leading-snug">
                   {filtered[0]?.title || caseStudies[0].title}
                 </h2>
+                {'client' in (filtered[0] || caseStudies[0]) && (filtered[0] || caseStudies[0]).client && (
+                  <p className="text-sm font-semibold text-green-400 mb-3 font-montserrat uppercase tracking-wider">Client: {(filtered[0] || caseStudies[0]).client}</p>
+                )}
                 <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-6">
                   {filtered[0]?.description || caseStudies[0].description}
                 </p>
@@ -188,9 +191,12 @@ export default function CaseStudies() {
                       <Briefcase className="w-3.5 h-3.5 text-blue-600" />
                       <span className="text-xs text-blue-600 font-semibold uppercase tracking-wider">{cs.industry}</span>
                     </div>
-                    <h3 className="text-lg font-bold text-navy-900 font-montserrat mb-3 group-hover:text-blue-600 transition-colors leading-snug line-clamp-2">
+                    <h3 className="text-lg font-bold text-navy-900 font-montserrat mb-2 group-hover:text-blue-600 transition-colors leading-snug line-clamp-2">
                       {cs.title}
                     </h3>
+                    {'client' in cs && cs.client && (
+                      <p className="text-xs font-semibold text-green-600 mb-2 font-montserrat uppercase tracking-wider">Client: {cs.client}</p>
+                    )}
                     <p className="text-gray-600 text-sm leading-relaxed line-clamp-3">{cs.description}</p>
                   </div>
                 </motion.div>

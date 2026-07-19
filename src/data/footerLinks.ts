@@ -50,6 +50,9 @@ export const footerPlatforms = [
 
 export const footerSolutions = [
   { label: 'Gen AI Solution Factory', link: '/solutions/gen-ai-solution-factory' },
+  { label: 'AWS Cloud Modernization', link: '/solutions/aws-cloud-modernization' },
+  { label: 'Managed Services – AWS', link: '/solutions/managed-services-aws' },
+  { label: 'Cloud Migration Solutions', link: '/solutions/cloud-migration-solutions' },
 ]
 
 export const footerQuickLinks = {

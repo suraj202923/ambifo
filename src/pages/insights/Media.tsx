@@ -104,7 +104,7 @@ export default function Media() {
                 {featuredMedia.desc}
               </p>
               <div className="flex items-center gap-4">
-                <Link to="/this-video-is-not-available" className="inline-flex items-center gap-2 px-6 py-3 bg-yellow-400 text-navy-900 font-semibold text-sm rounded-lg hover:bg-yellow-500 transition-colors">
+                <Link to="/this-video-is-not-available" className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-navy-900 font-semibold text-sm rounded-lg hover:bg-green-600 transition-colors">
                   <Play className="w-5 h-5 fill-current" /> Watch Now
                 </Link>
                 <span className="text-gray-400 text-sm">{featuredMedia.duration}</span>

@@ -170,7 +170,7 @@ function FeaturedEvent({ event }: { event: typeof upcomingEvents[0] }) {
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
-              <Link to="/contact-us" className="inline-flex items-center gap-2 px-8 py-3.5 bg-blue-600 text-white font-semibold rounded-xl hover:bg-blue-700 transition-all duration-300 font-montserrat shadow-lg shadow-blue-600/20 hover:shadow-blue-600/30 hover:-translate-y-0.5">
+              <Link to="/contact-us" className="inline-flex items-center gap-2 px-8 py-3.5 bg-green-500 text-navy-900 font-semibold rounded-xl hover:bg-green-600 transition-all duration-300 font-montserrat shadow-lg shadow-green-500/20 hover:shadow-green-500/30 hover:-translate-y-0.5">
                 Register Now <ArrowRight className="w-5 h-5" />
               </Link>
               <Link to="/contact-us" className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/20 text-white font-semibold rounded-xl hover:bg-white/10 transition-all duration-300 font-montserrat hover:-translate-y-0.5">
@@ -373,7 +373,7 @@ export default function Events() {
                           </div>
 
                           <div className="shrink-0 flex flex-row md:flex-col items-center gap-3">
-                            <Link to="/contact-us" className="inline-flex items-center gap-2 px-6 py-3 bg-navy-900 text-white text-sm font-semibold rounded-xl hover:bg-blue-600 transition-all duration-300 font-montserrat hover:-translate-y-0.5 shadow-md hover:shadow-lg">
+                            <Link to="/contact-us" className="inline-flex items-center gap-2 px-6 py-3 bg-navy-900 text-white text-sm font-semibold rounded-xl hover:bg-green-500 hover:text-navy-900 transition-all duration-300 font-montserrat hover:-translate-y-0.5 shadow-md hover:shadow-lg">
                               Register <ChevronRight className="w-4 h-4" />
                             </Link>
                             <div className="flex items-center gap-1 text-xs text-gray-400">
