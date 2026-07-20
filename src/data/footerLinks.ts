@@ -56,7 +56,7 @@ export const footerSolutions = [
 ]
 
 export const footerQuickLinks = {
-  offices: ['Nagpur, Maharashtra', 'Bangalore, Karnataka'],
+  offices: ['Bangalore (HQ)', 'Nagpur', 'San Francisco, USA', 'Melbourne, Australia', 'Dubai, UAE', 'Singapore'],
   industries: [
     { label: 'Aerospace & Satellite', link: '/industries/aerospace-satellite' },
     { label: 'Public Sector', link: '/industries/public-sector' },

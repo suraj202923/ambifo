@@ -104,14 +104,14 @@ export default function Media() {
                 {featuredMedia.desc}
               </p>
               <div className="flex items-center gap-4">
-                <Link to="/this-video-is-not-available" className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-navy-900 font-semibold text-sm rounded-lg hover:bg-green-600 transition-colors">
+                <Link to="/insights-resources/media" className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-navy-900 font-semibold text-sm rounded-lg hover:bg-green-600 transition-colors">
                   <Play className="w-5 h-5 fill-current" /> Watch Now
                 </Link>
                 <span className="text-gray-400 text-sm">{featuredMedia.duration}</span>
               </div>
             </div>
             {/* Play button overlay */}
-            <Link to="/this-video-is-not-available" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <Link to="/insights-resources/media" className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="w-20 h-20 bg-yellow-400/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-2xl">
                 <Play className="w-8 h-8 text-navy-900 fill-current ml-1" />
               </div>
@@ -176,7 +176,7 @@ export default function Media() {
                       </div>
                       {/* Play overlay for videos */}
                       {item.type === 'Video' && (
-                        <Link to="/this-video-is-not-available" className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <Link to="/insights-resources/media" className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                           <div className="w-14 h-14 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl">
                             <Play className="w-6 h-6 text-navy-900 fill-current ml-0.5" />
                           </div>

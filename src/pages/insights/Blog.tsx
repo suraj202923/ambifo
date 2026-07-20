@@ -131,7 +131,7 @@ export default function Blog() {
                     <span key={tag} className="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-semibold rounded-full">{tag}</span>
                   ))}
                 </div>
-                <Link to="/this-article-is-not-available" className="inline-flex items-center gap-2 text-blue-600 font-semibold text-sm hover:gap-3 transition-all font-montserrat">
+                <Link to="/insights-resources/blog-posts" className="inline-flex items-center gap-2 text-blue-600 font-semibold text-sm hover:gap-3 transition-all font-montserrat">
                   Read Article <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
@@ -223,7 +223,7 @@ export default function Blog() {
                             </span>
                           </div>
                           <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            <Link to="/this-article-is-not-available" className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl">
+                            <Link to="/insights-resources/blog-posts" className="w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center shadow-xl">
                               <ArrowUpRight className="w-5 h-5 text-navy-900" />
                             </Link>
                           </div>
@@ -325,7 +325,7 @@ export default function Blog() {
                 <h3 className="text-lg font-bold text-navy-900 font-montserrat mb-5">Popular Posts</h3>
                 <div className="space-y-4">
                   {blogPosts.slice(1, 5).map((post, i) => (
-                    <Link to="/this-article-is-not-available" key={post.title} className="flex gap-3 group cursor-pointer">
+                    <Link to="/insights-resources/blog-posts" key={post.title} className="flex gap-3 group cursor-pointer">
                       <span className="text-2xl font-bold text-blue-600/20 font-montserrat shrink-0 w-8 text-center leading-none pt-1">
                         {String(i + 1).padStart(2, '0')}
                       </span>

@@ -24,9 +24,9 @@ const leaders = [
     projects: '150+',
   },
   {
-    name: 'Shivani K',
+    name: 'Prabhasini M',
     role: 'Business Analyst',
-    initials: 'SK',
+    initials: 'PM',
     desc: 'Bridges the gap between business needs and technical solutions. Analyzes requirements, identifies opportunities, and ensures every project delivers measurable business value.',
     expertise: ['Business Analysis', 'Requirements Gathering', 'Stakeholder Management', 'Process Optimization', 'Data Analysis'],
     experience: '10+ Years',

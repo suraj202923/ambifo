@@ -57,7 +57,7 @@ export default function Partners() {
           className="text-center mt-14"
         >
           <a
-            href="/partners"
+            href="/company/partners"
             className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-navy-900 font-semibold px-8 py-3 rounded-lg transition-colors duration-300 font-montserrat"
           >
             Become a Partner

@@ -77,12 +77,13 @@ export default function VisionToReality() {
                   <p className="text-gray-600 text-sm mb-4 line-clamp-3 font-lato">
                     {study.description}
                   </p>
-                  <span
+                  <a
+                    href="/insights-resources/case-study"
                     className="inline-flex items-center gap-1 text-blue-600 font-semibold text-sm hover:text-blue-800 transition-colors font-montserrat"
                   >
                     Read More
                     <ArrowRight className="w-4 h-4" />
-                  </span>
+                  </a>
                 </div>
               </motion.div>
             ))}

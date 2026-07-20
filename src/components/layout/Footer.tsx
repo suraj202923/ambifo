@@ -86,7 +86,7 @@ export default function Footer() {
               </a>
               <div className="flex items-start gap-2 text-gray-400">
                 <MapPin className="w-4 h-4 text-yellow-400/60 shrink-0 mt-0.5" />
-                <span>Bangalore & Nagpur, India</span>
+                <span>Offices in Bangalore, Nagpur, San Francisco, Melbourne, Dubai & Singapore</span>
               </div>
             </div>
           </div>

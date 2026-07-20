@@ -31,7 +31,6 @@ const offices = [
   {
     city: 'San Francisco, USA',
     address: 'Ambifo Technology, 44 Montgomery St, Suite 300, San Francisco, CA 94104, United States of America',
-    phone: ['+91 7776809021', '+91 9827135213'],
     email: 'support@ambifo.com',
     flag: '\uD83C\uDDFA\uD83C\uDDF8',
     timezone: 'PST (UTC-8)',
@@ -40,7 +39,6 @@ const offices = [
   {
     city: 'Melbourne, Australia',
     address: 'Ambifo Technology Pty Ltd, Level 12, 727 Collins Street, Melbourne VIC 3008, Australia',
-    phone: ['+91 7776809021', '+91 9827135213'],
     email: 'support@ambifo.com',
     flag: '\uD83C\uDDE6\uD83C\uDDFA',
     timezone: 'AEST (UTC+10)',
@@ -49,7 +47,6 @@ const offices = [
   {
     city: 'Dubai, UAE',
     address: 'Ambifo Technology, Level 28, Boulevard Plaza Tower 1, Sheikh Mohammed bin Rashid Boulevard, Downtown Dubai, P.O. Box 123456, Dubai, United Arab Emirates',
-    phone: ['+91 7776809021', '+91 9827135213'],
     email: 'support@ambifo.com',
     flag: '\uD83C\uDDE6\uD83C\uDDEA',
     timezone: 'GST (UTC+4)',
@@ -58,7 +55,6 @@ const offices = [
   {
     city: 'Singapore',
     address: 'Ambifo Technology Pte. Ltd., 12 Marina Boulevard, #24-01 Marina Bay Financial Centre Tower 3, Singapore 018982',
-    phone: ['+91 7776809021', '+91 9827135213'],
     email: 'support@ambifo.com',
     flag: '\uD83C\uDDF8\uD83C\uDDEC',
     timezone: 'SGT (UTC+8)',
@@ -448,7 +444,7 @@ export default function ContactPage() {
                       </div>
                       <div className="space-y-2 text-gray-600 text-sm">
                         <p className="flex items-start gap-2.5"><MapPin className="w-3.5 h-3.5 text-green-500 shrink-0 mt-0.5" /> <span className="leading-relaxed">{office.address}</span></p>
-                        {office.phone.map((p) => (
+                        {office.phone?.map((p) => (
                           <p key={p} className="flex items-center gap-2.5"><Phone className="w-3.5 h-3.5 text-green-500 shrink-0" /> {p}</p>
                         ))}
                         <p className="flex items-center gap-2.5"><Mail className="w-3.5 h-3.5 text-green-500 shrink-0" /> {office.email}</p>

@@ -1,8 +1,9 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import RibbonBanner from './RibbonBanner'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import Chatbot from '../common/Chatbot'
 
 export default function Layout() {
   const [ribbonVisible, setRibbonVisible] = useState(true)
@@ -18,6 +19,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <Chatbot />
     </div>
   )
 }
