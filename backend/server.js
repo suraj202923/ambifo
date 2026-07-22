@@ -15,7 +15,7 @@ app.use(express.json({ limit: '10kb' }));
 // CORS configuration
 app.use(cors({
   origin: process.env.ALLOWED_ORIGINS?.split(',') || ['http://localhost:5173', 'http://localhost:3000'],
-  methods: ['POST'],
+  methods: ['POST', 'GET'],
   allowedHeaders: ['Content-Type'],
 }));
 
@@ -154,6 +154,150 @@ app.post('/api/contact', contactLimiter, async (req, res) => {
     res.status(500).json({
       success: false,
       error: 'Failed to send message. Please try again later or email us directly at support@ambifo.com',
+    });
+  }
+});
+
+// Newsletter subscription endpoint
+app.post('/api/subscribe', contactLimiter, async (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email?.trim()) {
+      return res.status(400).json({ success: false, error: 'Email is required' });
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return res.status(400).json({ success: false, error: 'Please enter a valid email' });
+    }
+
+    const cleanEmail = sanitize(email);
+
+    // Send notification email
+    const receiverEmail = process.env.RECEIVER_EMAIL || 'support@ambifo.com';
+    const senderEmail = process.env.SENDER_EMAIL || process.env.SMTP_USER;
+
+    const mailOptions = {
+      from: `"Ambifo Newsletter" <${senderEmail}>`,
+      to: receiverEmail,
+      subject: `New Newsletter Subscription: ${cleanEmail}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #0f172a; border-bottom: 2px solid #0fb8a9; padding-bottom: 10px;">
+            New Newsletter Subscription
+          </h2>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <tr>
+              <td style="padding: 8px 12px; font-weight: bold; color: #374151; width: 140px;">Email</td>
+              <td style="padding: 8px 12px; color: #1f2937;"><a href="mailto:${cleanEmail}">${cleanEmail}</a></td>
+            </tr>
+            <tr style="background: #f9fafb;">
+              <td style="padding: 8px 12px; font-weight: bold; color: #374151;">Timestamp</td>
+              <td style="padding: 8px 12px; color: #1f2937;">${new Date().toISOString()}</td>
+            </tr>
+          </table>
+          <p style="margin-top: 20px; font-size: 12px; color: #9ca3af;">
+            Subscribed via Ambifo Technology Website Footer
+          </p>
+        </div>
+      `,
+      text: `New Newsletter Subscription\n\nEmail: ${cleanEmail}\nTimestamp: ${new Date().toISOString()}`,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.json({ success: true, message: 'Successfully subscribed to newsletter!' });
+  } catch (error) {
+    console.error('Newsletter subscription error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to subscribe. Please try again later.',
+    });
+  }
+});
+
+// Job application endpoint
+app.post('/api/careers/apply', contactLimiter, async (req, res) => {
+  try {
+    const { name, email, phone, position, message } = req.body;
+
+    // Validate
+    const errors = {};
+    if (!name?.trim()) errors.name = 'Name is required';
+    if (!email?.trim()) {
+      errors.email = 'Email is required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errors.email = 'Please enter a valid email';
+    }
+    if (!position?.trim()) errors.position = 'Position is required';
+
+    if (Object.keys(errors).length > 0) {
+      return res.status(400).json({ success: false, errors });
+    }
+
+    // Sanitize
+    const data = {
+      name: sanitize(name),
+      email: sanitize(email),
+      phone: sanitize(phone),
+      position: sanitize(position),
+      message: sanitize(message || ''),
+    };
+
+    // Send notification email
+    const receiverEmail = process.env.RECEIVER_EMAIL || 'support@ambifo.com';
+    const senderEmail = process.env.SENDER_EMAIL || process.env.SMTP_USER;
+
+    const mailOptions = {
+      from: `"${data.name}" <${senderEmail}>`,
+      to: receiverEmail,
+      replyTo: data.email,
+      subject: `Job Application: ${data.name} for ${data.position}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #0f172a; border-bottom: 2px solid #0fb8a9; padding-bottom: 10px;">
+            New Job Application
+          </h2>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <tr>
+              <td style="padding: 8px 12px; font-weight: bold; color: #374151; width: 140px;">Name</td>
+              <td style="padding: 8px 12px; color: #1f2937;">${data.name}</td>
+            </tr>
+            <tr style="background: #f9fafb;">
+              <td style="padding: 8px 12px; font-weight: bold; color: #374151;">Email</td>
+              <td style="padding: 8px 12px; color: #1f2937;"><a href="mailto:${data.email}">${data.email}</a></td>
+            </tr>
+            ${data.phone ? `
+            <tr>
+              <td style="padding: 8px 12px; font-weight: bold; color: #374151;">Phone</td>
+              <td style="padding: 8px 12px; color: #1f2937;"><a href="tel:${data.phone}">${data.phone}</a></td>
+            </tr>` : ''}
+            <tr style="background: #f9fafb;">
+              <td style="padding: 8px 12px; font-weight: bold; color: #374151;">Position</td>
+              <td style="padding: 8px 12px; color: #1f2937;">${data.position}</td>
+            </tr>
+            ${data.message ? `
+            <tr>
+              <td style="padding: 8px 12px; font-weight: bold; color: #374151; vertical-align: top;">Cover Letter</td>
+              <td style="padding: 8px 12px; color: #1f2937; white-space: pre-wrap;">${data.message}</td>
+            </tr>` : ''}
+          </table>
+          <p style="margin-top: 20px; font-size: 12px; color: #9ca3af;">
+            Applied via Ambifo Technology Careers Page
+          </p>
+        </div>
+      `,
+      text: `New Job Application\n\nName: ${data.name}\nEmail: ${data.email}\nPhone: ${data.phone || 'N/A'}\nPosition: ${data.position}\n\nCover Letter:\n${data.message}`,
+    };
+
+    await transporter.sendMail(mailOptions);
+
+    res.json({ success: true, message: 'Application submitted successfully!' });
+  } catch (error) {
+    console.error('Job application error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to submit application. Please try again later or email us directly at support@ambifo.com',
     });
   }
 });

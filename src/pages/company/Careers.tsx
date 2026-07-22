@@ -1,5 +1,6 @@
-import { motion } from 'framer-motion'
-import { ArrowRight, Briefcase, Users, TrendingUp, Globe, Heart, Zap, GraduationCap, MapPin, ChevronRight } from 'lucide-react'
+import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ArrowRight, Briefcase, Users, TrendingUp, Globe, Heart, Zap, GraduationCap, MapPin, ChevronRight, X, Send, CheckCircle } from 'lucide-react'
 import Button from '../../components/common/Button'
 import { Helmet } from 'react-helmet-async'
 
@@ -25,7 +26,218 @@ const positions = [
   { title: 'Project Manager - Cloud Migration', location: 'Malaysia', type: 'Contract', level: 'Senior', team: 'Delivery' },
 ]
 
+interface ApplicationFormProps {
+  position: string
+  onClose: () => void
+}
+
+function ApplicationForm({ position, onClose }: ApplicationFormProps) {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
+  const [errors, setErrors] = useState<Record<string, string>>({})
+  const [sending, setSending] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+
+  const validate = () => {
+    const errs: Record<string, string> = {}
+    if (!form.name.trim()) errs.name = 'Name is required'
+    if (!form.email.trim()) errs.email = 'Email is required'
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) errs.email = 'Please enter a valid email'
+    return errs
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    const errs = validate()
+    if (Object.keys(errs).length > 0) { setErrors(errs); return }
+    setErrors({})
+    setSending(true)
+
+    try {
+      const API_URL = import.meta.env.VITE_API_URL || ''
+      const response = await fetch(`${API_URL}/api/careers/apply`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...form, position }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        if (data.errors) {
+          setErrors(data.errors)
+        } else {
+          setErrors({ submit: data.error || 'Failed to submit application. Please try again.' })
+        }
+        return
+      }
+
+      setSubmitted(true)
+    } catch {
+      setErrors({ submit: 'Network error. Please check your connection and try again.' })
+    } finally {
+      setSending(false)
+    }
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+    if (errors[e.target.name]) setErrors({ ...errors, [e.target.name]: '' })
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        transition={{ duration: 0.3 }}
+        className="bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {submitted ? (
+          <div className="p-8 text-center">
+            <motion.div
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ type: 'spring', bounce: 0.5, delay: 0.1 }}
+              className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-5 shadow-lg shadow-green-200"
+            >
+              <CheckCircle className="w-8 h-8 text-white" />
+            </motion.div>
+            <h3 className="text-xl font-bold text-navy-900 font-montserrat mb-2">Application Submitted!</h3>
+            <p className="text-gray-500 text-sm mb-6">Thank you for applying for the <strong>{position}</strong> position. Our team will review your application and get back to you within 5 business days.</p>
+            <button
+              onClick={onClose}
+              className="inline-flex items-center gap-2 px-6 py-3 bg-navy-900 text-white font-semibold text-sm rounded-xl hover:bg-navy-800 transition-colors font-montserrat"
+            >
+              Close
+            </button>
+          </div>
+        ) : (
+          <div className="p-6">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-xl font-bold text-navy-900 font-montserrat">Apply for Position</h3>
+                <p className="text-sm text-gray-500 mt-1">{position}</p>
+              </div>
+              <button onClick={onClose} className="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                <X className="w-5 h-5 text-gray-500" />
+              </button>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 font-montserrat">
+                  Full Name *
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={form.name}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all ${
+                    errors.name ? 'border-red-400 bg-red-50/50' : 'border-gray-200 focus:border-blue-500 focus:bg-blue-50/30'
+                  }`}
+                  placeholder="John Doe"
+                />
+                {errors.name && <p className="text-red-500 text-xs mt-1 font-medium">{errors.name}</p>}
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 font-montserrat">
+                  Email *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={form.email}
+                  onChange={handleChange}
+                  className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all ${
+                    errors.email ? 'border-red-400 bg-red-50/50' : 'border-gray-200 focus:border-blue-500 focus:bg-blue-50/30'
+                  }`}
+                  placeholder="john@company.com"
+                />
+                {errors.email && <p className="text-red-500 text-xs mt-1 font-medium">{errors.email}</p>}
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 font-montserrat">
+                  Phone
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={form.phone}
+                  onChange={handleChange}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:bg-blue-50/30 outline-none transition-all text-sm"
+                  placeholder="+1 (555) 000-0000"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 font-montserrat">
+                  Cover Letter / Message
+                </label>
+                <textarea
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-500 focus:bg-blue-50/30 outline-none transition-all text-sm resize-none"
+                  placeholder="Tell us why you're a great fit for this role..."
+                />
+              </div>
+
+              {errors.submit && (
+                <p className="text-red-500 text-xs text-center font-medium">{errors.submit}</p>
+              )}
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="flex-1 px-4 py-3 border border-gray-200 text-gray-600 font-semibold text-sm rounded-xl hover:bg-gray-50 transition-all font-montserrat"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-3 bg-green-500 text-navy-900 font-semibold text-sm rounded-xl hover:bg-green-600 transition-all font-montserrat disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {sending ? (
+                    <>
+                      <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      Submitting...
+                    </>
+                  ) : (
+                    <>
+                      Submit Application <Send className="w-4 h-4" />
+                    </>
+                  )}
+                </button>
+              </div>
+              <p className="text-center text-xs text-gray-400">We'll review your application and get back to you within 5 business days.</p>
+            </form>
+          </div>
+        )}
+      </motion.div>
+    </motion.div>
+  )
+}
+
 export default function Careers() {
+  const [selectedPosition, setSelectedPosition] = useState<string | null>(null)
+
   return (
     <div className="font-lato">
       <Helmet>
@@ -130,9 +342,12 @@ export default function Careers() {
                     <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" />{pos.team}</span>
                   </div>
                 </div>
-                <Button variant="outline" className="shrink-0" href="/contact-us">
+                <button
+                  onClick={() => setSelectedPosition(pos.title)}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-navy-900 font-semibold text-sm rounded-lg transition-all duration-300 font-montserrat shrink-0"
+                >
                   Apply Now <ChevronRight className="w-4 h-4" />
-                </Button>
+                </button>
               </motion.div>
             ))}
           </div>
@@ -151,6 +366,16 @@ export default function Careers() {
           </motion.div>
         </div>
       </section>
+
+      {/* Application Modal */}
+      <AnimatePresence>
+        {selectedPosition && (
+          <ApplicationForm
+            position={selectedPosition}
+            onClose={() => setSelectedPosition(null)}
+          />
+        )}
+      </AnimatePresence>
     </div>
   )
 }

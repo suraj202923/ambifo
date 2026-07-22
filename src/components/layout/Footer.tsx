@@ -46,12 +46,37 @@ function FooterNavLink({ to, label }: { to: string; label: string }) {
 export default function Footer() {
   const [email, setEmail] = useState('')
   const [subscribed, setSubscribed] = useState(false)
+  const [subscribing, setSubscribing] = useState(false)
+  const [subscribeError, setSubscribeError] = useState('')
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (email.trim()) {
+    if (!email.trim()) return
+
+    setSubscribing(true)
+    setSubscribeError('')
+
+    try {
+      const API_URL = import.meta.env.VITE_API_URL || ''
+      const response = await fetch(`${API_URL}/api/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email.trim() }),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        setSubscribeError(data.error || 'Failed to subscribe. Please try again.')
+        return
+      }
+
       setSubscribed(true)
       setEmail('')
+    } catch {
+      setSubscribeError('Network error. Please check your connection and try again.')
+    } finally {
+      setSubscribing(false)
     }
   }
 
@@ -107,13 +132,29 @@ export default function Footer() {
                     type="email"
                     placeholder="Enter your email"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    onChange={(e) => { setEmail(e.target.value); setSubscribeError('') }}
                     required
-                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 text-sm outline-none focus:border-yellow-400/50 focus:bg-white/10 transition-all"
+                    disabled={subscribing}
+                    className="w-full pl-10 pr-4 py-3 rounded-xl bg-white/5 border border-white/10 text-white placeholder-gray-500 text-sm outline-none focus:border-yellow-400/50 focus:bg-white/10 transition-all disabled:opacity-50"
                   />
                 </div>
-                <button type="submit" className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-green-500 text-navy-900 font-semibold text-sm rounded-xl hover:bg-green-600 transition-all font-montserrat hover:shadow-lg hover:shadow-green-500/20">
-                  Subscribe <Send className="w-4 h-4" />
+                {subscribeError && (
+                  <p className="text-red-400 text-xs font-medium">{subscribeError}</p>
+                )}
+                <button type="submit" disabled={subscribing} className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-green-500 text-navy-900 font-semibold text-sm rounded-xl hover:bg-green-600 transition-all font-montserrat hover:shadow-lg hover:shadow-green-500/20 disabled:opacity-50 disabled:cursor-not-allowed">
+                  {subscribing ? (
+                    <>
+                      <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                      </svg>
+                      Subscribing...
+                    </>
+                  ) : (
+                    <>
+                      Subscribe <Send className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </form>
             )}
