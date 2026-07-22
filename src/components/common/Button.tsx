@@ -8,6 +8,7 @@ interface ButtonProps {
   onClick?: (e: MouseEvent<HTMLButtonElement>) => void
   className?: string
   type?: 'button' | 'submit' | 'reset'
+  disabled?: boolean
 }
 
 const variants = {
@@ -16,7 +17,7 @@ const variants = {
   outline: 'border-2 border-green-500 text-green-500 hover:bg-green-500 hover:text-navy-900',
 }
 
-export default function Button({ variant = 'primary', children, href, onClick, className = '', type = 'button' }: ButtonProps) {
+export default function Button({ variant = 'primary', children, href, onClick, className = '', type = 'button', disabled = false }: ButtonProps) {
   const base = `inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-lg transition-all duration-300 font-montserrat ${variants[variant]} ${className}`
 
   if (href) {
@@ -28,7 +29,7 @@ export default function Button({ variant = 'primary', children, href, onClick, c
   }
 
   return (
-    <button type={type} onClick={onClick} className={base}>
+    <button type={type} onClick={onClick} disabled={disabled} className={`${base} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}>
       {children}
     </button>
   )

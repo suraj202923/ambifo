@@ -126,6 +126,7 @@ function AnimatedCounter({ value }: { value: string }) {
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [form, setForm] = useState({ firstName: '', lastName: '', email: '', company: '', phone: '', service: '', message: '' })
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -141,12 +142,38 @@ export default function ContactPage() {
     return errs
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length > 0) { setErrors(errs); return }
     setErrors({})
-    setSubmitted(true)
+    setSending(true)
+
+    try {
+      const API_URL = import.meta.env.VITE_API_URL || ''
+      const response = await fetch(`${API_URL}/api/contact`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        if (data.errors) {
+          setErrors(data.errors)
+        } else {
+          setErrors({ submit: data.error || 'Failed to send message. Please try again.' })
+        }
+        return
+      }
+
+      setSubmitted(true)
+    } catch {
+      setErrors({ submit: 'Network error. Please check your connection and try again.' })
+    } finally {
+      setSending(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -393,11 +420,26 @@ export default function ContactPage() {
                             Continue <ArrowRight className="w-4 h-4" />
                           </button>
                         ) : (
-                          <Button className="w-full justify-center group" type="submit">
-                            Send Message <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                          <Button className="w-full justify-center group" type="submit" disabled={sending}>
+                            {sending ? (
+                              <>
+                                <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24">
+                                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                                </svg>
+                                Sending...
+                              </>
+                            ) : (
+                              <>
+                                Send Message <Send className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                              </>
+                            )}
                           </Button>
                         )}
                       </div>
+                      {errors.submit && (
+                        <p className="text-red-500 text-xs mt-2 text-center font-medium">{errors.submit}</p>
+                      )}
                       <p className="text-center text-xs text-gray-400">We'll never share your information. Read our <a href="/privacy-policy" className="text-blue-500 hover:underline">Privacy Policy</a>.</p>
                     </form>
                   </div>
