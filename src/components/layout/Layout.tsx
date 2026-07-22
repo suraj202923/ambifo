@@ -1,5 +1,5 @@
-﻿import { useState } from 'react'
-import { Outlet } from 'react-router-dom'
+﻿import { useState, useEffect } from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
 import RibbonBanner from './RibbonBanner'
 import Navbar from './Navbar'
 import Footer from './Footer'
@@ -8,6 +8,11 @@ import Chatbot from '../common/Chatbot'
 export default function Layout() {
   const [ribbonVisible, setRibbonVisible] = useState(true)
   const offsetClass = ribbonVisible ? 'pt-[104px] lg:pt-[112px]' : 'pt-16 lg:pt-[72px]'
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
 
   return (
     <div className="min-h-screen flex flex-col">

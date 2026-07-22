@@ -20,12 +20,12 @@ const accentMap: Record<string, string> = {
 }
 
 const bgMap: Record<string, string> = {
-  'Strategy & Advisory': '/images/whatwedo/strategy.jpg',
-  'Cloud Infrastructure & Security': '/images/whatwedo/cloud.jpg',
-  'App Modernization': '/images/whatwedo/hardware.jpg',
-  'AI, Data & Analytics': '/images/whatwedo/data.jpg',
-  'Generative AI': '/images/whatwedo/ai.jpg',
-  'Data & AI Platforms': '/images/whatwedo/network.jpg',
+  'Strategy & Advisory': '/images/whatwedo/strategy-new.jpg',
+  'Cloud Infrastructure & Security': '/images/whatwedo/cybersecurity.jpg',
+  'App Modernization': '/images/whatwedo/devops.jpg',
+  'AI, Data & Analytics': '/images/whatwedo/ai-ml.jpg',
+  'Generative AI': '/images/whatwedo/genai.jpg',
+  'Data & AI Platforms': '/images/whatwedo/data-analyst.jpg',
 }
 
 export default function WhatWeDo() {
