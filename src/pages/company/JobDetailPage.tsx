@@ -301,7 +301,7 @@ function ApplicationSidebar({ position }: { position: string }) {
               <input
                 type="text" name="name" value={form.name} onChange={handleChange}
                 className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all ${errors.name ? 'border-red-400 bg-red-50/50' : 'border-gray-200 focus:border-green-500 focus:bg-green-50/30'}`}
-                placeholder="John Doe"
+                placeholder="Vinit W"
               />
               {errors.name && <p className="text-red-500 text-xs mt-1 font-medium">{errors.name}</p>}
             </div>

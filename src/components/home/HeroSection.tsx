@@ -62,11 +62,13 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white font-montserrat leading-tight mb-6"
+          className="text-4xl md:text-6xl lg:text-7xl font-bold text-white font-montserrat leading-normal mb-8"
         >
-          Applied Technology.{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-            Smarter Business.
+          <span className="block text-2xl md:text-3xl lg:text-4xl font-semibold text-gray-300 tracking-wide mb-1">
+            We do everything
+          </span>
+          <span className="block pb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-teal-400 to-green-400">
+            Agentic in AI Era
           </span>
         </motion.h1>
 

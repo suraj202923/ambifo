@@ -8,7 +8,7 @@ interface ResumeModalProps {
 
 const steps = [
   [
-    { name: 'name', label: 'Full Name', type: 'text', placeholder: 'John Doe', required: true },
+    { name: 'name', label: 'Full Name', type: 'text', placeholder: 'Vinit W', required: true },
     { name: 'email', label: 'Email', type: 'email', placeholder: 'john@company.com', required: true },
   ],
   [
@@ -208,7 +208,7 @@ export default function ResumeModal({ onClose }: ResumeModalProps) {
                         <input
                           type="text" name="name" value={form.name} onChange={handleChange}
                           className={`w-full px-4 py-3 rounded-xl border text-sm outline-none transition-all ${errors.name ? 'border-red-400 bg-red-50/50' : 'border-gray-200 focus:border-green-500 focus:bg-green-50/30'}`}
-                          placeholder="John Doe"
+                          placeholder="Vinit W"
                         />
                         {errors.name && <p className="text-red-500 text-xs mt-1 font-medium">{errors.name}</p>}
                       </div>

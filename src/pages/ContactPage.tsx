@@ -183,8 +183,8 @@ export default function ContactPage() {
 
   const formFields = [
     [
-      { name: 'firstName', label: 'First Name', type: 'text', placeholder: 'John', required: true },
-      { name: 'lastName', label: 'Last Name', type: 'text', placeholder: 'Doe', required: true },
+      { name: 'firstName', label: 'First Name', type: 'text', placeholder: 'Vinit', required: true },
+      { name: 'lastName', label: 'Last Name', type: 'text', placeholder: 'W', required: true },
     ],
     [
       { name: 'email', label: 'Email', type: 'email', placeholder: 'john@company.com', required: true },
